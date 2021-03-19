@@ -1,4 +1,4 @@
-package edu.escuelaing.ieti.controllers;
+package edu.escuelaing.ieti.web.controllers;
 
 import org.springframework.stereotype.Controller;
 
