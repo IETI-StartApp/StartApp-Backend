@@ -11,8 +11,7 @@ import java.io.Serializable;
 public class Project implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
-	@Getter @Setter
-	private long id;
+	private String id;
 	@Getter @Setter
 	private String name;
 	@Getter @Setter
@@ -27,7 +26,6 @@ public class Project implements Serializable {
 	private String description;
 	@Getter @Setter
 	private Finance finance;
-
 
 	public Project() {
 	}

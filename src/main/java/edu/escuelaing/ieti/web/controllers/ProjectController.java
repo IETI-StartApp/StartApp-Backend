@@ -18,7 +18,7 @@ public class ProjectController {
 		return new ResponseEntity<>("Prueba", HttpStatus.ACCEPTED);
 	}
 	@PostMapping()
-	public ResponseEntity<?> createProject(@RequestBody Project project){
+	public ResponseEntity<Project> createProject(@RequestBody Project project){
 		projectServices.createProject(project);
 		return new ResponseEntity<>(project,HttpStatus.CREATED);
 	}
