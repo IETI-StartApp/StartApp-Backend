@@ -21,10 +21,9 @@ import static org.mockito.Mockito.when;
 @AutoConfigureMockMvc
 
 class ProjectControllerTests {
-    @Mock
-    private ProjectServices projectServicesMock = Mockito.mock(ProjectServicesImpl.class);
-    private ProjectController projectController = new ProjectController(projectServicesMock);;
 
+    private ProjectServices projectServicesMock = Mockito.mock(ProjectServicesImpl.class);
+    private ProjectController projectController = new ProjectController(projectServicesMock);
 
     @Test
     void shouldCreateProject() {
