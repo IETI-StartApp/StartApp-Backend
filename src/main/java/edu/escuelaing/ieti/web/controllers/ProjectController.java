@@ -11,15 +11,17 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = "api/v1/projects")
 public class ProjectController {
 
+	private final ProjectServices projectServices;
+
 	@Autowired
-	ProjectServices projectServices;
-	@RequestMapping(method = RequestMethod.GET, value = "/{id}")
-	public ResponseEntity<?> obtenerUsuario(@PathVariable int id) {
-		return new ResponseEntity<>("Prueba", HttpStatus.ACCEPTED);
+	public ProjectController(ProjectServices projectServices) {
+		this.projectServices = projectServices;
 	}
+
 	@PostMapping()
 	public ResponseEntity<Project> createProject(@RequestBody Project project){
 		projectServices.createProject(project);
+
 		return new ResponseEntity<>(project,HttpStatus.CREATED);
 	}
 

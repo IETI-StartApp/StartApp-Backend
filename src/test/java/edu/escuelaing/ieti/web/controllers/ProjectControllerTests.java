@@ -1,43 +1,38 @@
 package edu.escuelaing.ieti.web.controllers;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.escuelaing.ieti.business.model.Finance;
 import edu.escuelaing.ieti.business.model.Project;
 import edu.escuelaing.ieti.business.model.User;
+import edu.escuelaing.ieti.business.services.projectServices.ProjectServices;
+import edu.escuelaing.ieti.business.services.projectServices.ipml.ProjectServicesImpl;
+import org.junit.Assert;
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.MediaType;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import java.util.Date;
-
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.mockito.Mockito.when;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ProjectControllerTests {
-    @Autowired
-    private MockMvc mockMvc;
+
+class ProjectControllerTests {
+    @Mock
+    private ProjectServices projectServicesMock = Mockito.mock(ProjectServicesImpl.class);
+    private ProjectController projectController = new ProjectController(projectServicesMock);;
+
+
     @Test
-    public void shouldCreateProject() throws Exception {
-        Finance finance = new Finance(1, 1, 1, 1, new Date(), new Date());
-        Project project = new Project("proyectox", "test", null, "video", "country", "f", finance);
-        mockMvc.perform(
-                MockMvcRequestBuilders
-                        .post("/api/v1/projects")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(asJsonString(project))
-                        .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isCreated());
+    void shouldCreateProject() {
+        Finance financeTest = new Finance(1L,2,1L,2L,new Date(),new Date());
+        Project testProject = new Project("test", "abc.com", new User(), "abc.com", "CO", "testDesc",financeTest);
+        when(projectServicesMock.createProject(Mockito.any())).thenReturn(testProject);
+        ResponseEntity<Project> httpResponse = projectController.createProject(testProject);
+        Assert.assertEquals(httpResponse.getStatusCode(), HttpStatus.CREATED);
     }
-    public static String asJsonString(final Object obj) {
-        try {
-            return new ObjectMapper().writeValueAsString(obj);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
+
 }

@@ -10,8 +10,12 @@ import edu.escuelaing.ieti.business.services.projectServices.ProjectServices;
 @Service
 public class ProjectServicesImpl implements ProjectServices {
 
+    private final ProjectRepository projectRepository;
     @Autowired
-    ProjectRepository projectRepository;
+    public ProjectServicesImpl(ProjectRepository projectRepository) {
+        this.projectRepository = projectRepository;
+    }
+
     @Override
     public Project createProject(Project project) {
         projectRepository.save(project);
