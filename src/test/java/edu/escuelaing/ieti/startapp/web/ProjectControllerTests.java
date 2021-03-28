@@ -32,11 +32,13 @@ class ProjectControllerTests {
     private ProjectController projectController = new ProjectController(projectServicesMock);
     private BindingResult result;
     private Project testProject1,testProject2;
+
     @BeforeEach
     public void setUp(){
         initializeProjects();
         result = Mockito.mock(BindingResult.class);
     }
+
     @Test
     void shouldNotCreateProject() {
         when(projectServicesMock.createProject(Mockito.any())).thenReturn(testProject1);
@@ -49,6 +51,7 @@ class ProjectControllerTests {
         List<Error> errors = ((Map<String,List<Error>>) Objects.requireNonNull(httpResponse.getBody())).get("errors");
         Assertions.assertArrayEquals(errors.toArray(),errorList.toArray());
     }
+
     @Test
     void shouldCreateProject(){
         when(projectServicesMock.createProject(Mockito.any())).thenReturn(testProject2);
@@ -56,11 +59,12 @@ class ProjectControllerTests {
         ResponseEntity<Object> httpResponse = projectController.createProject(new ProjectRequest(testProject2),result);
         Assertions.assertEquals(HttpStatus.CREATED,httpResponse.getStatusCode());
     }
+
     private void initializeErrors(List<Error> errors){
         errors.add(new Error("finance.minimumInvestment","La inversión mínima debe ser mayor a 100000"));
         errors.add(new Error("description","La descripción del proyecto debe tener míninimo 20 carácteres y máximo 250"));
-
     }
+
     private void setUpMockErrors(List<Error> errors){
         List<FieldError> fieldErrors = errors.stream()
                 .map(error -> new FieldError("test",error.getField(),error.getMessage()))
@@ -68,6 +72,7 @@ class ProjectControllerTests {
         when(result.hasErrors()).thenReturn(true);
         when(result.getFieldErrors()).thenReturn(fieldErrors);
     }
+
     private void initializeProjects(){
         Finance testFinance1 = new Finance(1L,2,1L,2L,new Date(),new Date());
         testProject1 = new Project("testProject", "abc.com", "abc.com", "CO",
