@@ -19,7 +19,7 @@ public class ProjectRequest implements Serializable {
     @NotEmpty(message = "El proyecto debe tener un país")
     private String country;
     @NotEmpty
-    @Size(min=20,max=250,message = "Las descripción del proyecto debe tener míninimo 20 carácteres y máximo 250")
+    @Size(min=20,max=250,message = "La descripción del proyecto debe tener míninimo 20 carácteres y máximo 250")
     private String description;
     @Valid
     private Finance finance;
