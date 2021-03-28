@@ -3,21 +3,28 @@ package edu.escuelaing.ieti.startapp.web.requests;
 import edu.escuelaing.ieti.startapp.business.model.Finance;
 import edu.escuelaing.ieti.startapp.business.model.Project;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 public class ProjectRequest implements Serializable {
 
     private static final long serialVersionUID = 2L;
+    @NotEmpty
+    @Size(min=6,max=25,message = "El nombre del proyecto debe tener míninimo 6 carácteres y máximo 25")
     private String name;
     private String image;
     private String video;
+    @NotEmpty(message = "El proyecto debe tener un país")
     private String country;
+    @NotEmpty
+    @Size(min=20,max=250,message = "Las descripción del proyecto debe tener míninimo 20 carácteres y máximo 250")
     private String description;
+    @Valid
     private Finance finance;
-
     public ProjectRequest(){
     }
-
     public ProjectRequest(Project project){
         this.name = project.getName();
         this.image = project.getImage();
