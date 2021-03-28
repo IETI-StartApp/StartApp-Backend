@@ -17,7 +17,7 @@ public class ProjectRequest implements Serializable {
 
     public ProjectRequest(){
     }
-    
+
     public ProjectRequest(Project project){
         this.name = project.getName();
         this.image = project.getImage();
