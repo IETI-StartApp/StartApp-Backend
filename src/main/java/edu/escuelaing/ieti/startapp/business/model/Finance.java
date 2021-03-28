@@ -3,8 +3,6 @@ package edu.escuelaing.ieti.startapp.business.model;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.validation.annotation.Validated;
-
 import javax.validation.constraints.Min;
 import java.io.Serializable;
 import java.util.Date;

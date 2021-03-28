@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 public class ErrorHandler {
 
     public boolean isValidRequest(BindingResult result){
-        return result.hasErrors() ? false: true;
+        return !result.hasErrors();
     }
     public ResponseEntity<Object> getBadRequest(BindingResult result){
         Map<String,List<Error>> response = new HashMap<>();
