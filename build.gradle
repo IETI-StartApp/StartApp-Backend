@@ -73,7 +73,7 @@ sonarqube {
 		property "sonar.verbose", "true"
 		property "sonar.sources", "src/main/"
 		property "sonar.tests", "src/test/"
-		property "sonar.coverage.exclusions", "**/edu/escuelaing/ieti/startapp/web/requests/**," + "**/edu/escuelaing/ieti/startapp/StartappApplication**" + "**/edu/escuelaing/ieti/startapp/web/handlers/Error.equals"
+		property "sonar.coverage.exclusions", "**/edu/escuelaing/ieti/startapp/web/requests/**," + "**/edu/escuelaing/ieti/startapp/StartappApplication**," + "**/edu/escuelaing/ieti/startapp/web/handlers/Error.equals"
 	}
 }
 
