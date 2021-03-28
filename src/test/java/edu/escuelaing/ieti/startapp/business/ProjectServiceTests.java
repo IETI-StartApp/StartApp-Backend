@@ -9,11 +9,15 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Date;
 
 import static org.mockito.Mockito.when;
 
+@SpringBootTest
+@AutoConfigureMockMvc
 public class ProjectServiceTests {
 
     private ProjectRepository projectRepositoryMock = Mockito.mock(ProjectRepository.class);
@@ -21,7 +25,7 @@ public class ProjectServiceTests {
     private Project testProject1;
 
     @BeforeEach
-    public void setUp(){
+    void setUp(){
         setUpProjects();
     }
 

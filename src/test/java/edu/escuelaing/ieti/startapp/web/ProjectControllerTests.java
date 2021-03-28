@@ -34,7 +34,7 @@ class ProjectControllerTests {
     private Project testProject1,testProject2;
 
     @BeforeEach
-    public void setUp(){
+    void setUp(){
         initializeProjects();
         result = Mockito.mock(BindingResult.class);
     }
