@@ -8,7 +8,6 @@ import java.io.Serializable;
 public class ProjectRequest implements Serializable {
 
     private static final long serialVersionUID = 2L;
-    private String id;
     private String name;
     private String image;
     private String video;
@@ -16,8 +15,10 @@ public class ProjectRequest implements Serializable {
     private String description;
     private Finance finance;
 
+    public ProjectRequest(){
+    }
+    
     public ProjectRequest(Project project){
-        this.id = project.getId();
         this.name = project.getName();
         this.image = project.getImage();
         this.country = project.getCountry();
@@ -29,5 +30,51 @@ public class ProjectRequest implements Serializable {
         return new Project(name,image,video,country,description,finance);
     }
 
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getVideo() {
+        return video;
+    }
+
+    public void setVideo(String video) {
+        this.video = video;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Finance getFinance() {
+        return finance;
+    }
+
+    public void setFinance(Finance finance) {
+        this.finance = finance;
+    }
 }
