@@ -26,4 +26,8 @@ public class Error {
                 Objects.equals(message, error.message);
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(field, message);
+    }
 }
