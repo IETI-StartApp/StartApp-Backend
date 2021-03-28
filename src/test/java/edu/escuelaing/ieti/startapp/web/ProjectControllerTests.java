@@ -21,7 +21,7 @@ import static org.mockito.Mockito.when;
 @SpringBootTest
 @AutoConfigureMockMvc
 
-public class ProjectControllerTests {
+class ProjectControllerTests {
 
     private IProjectServices projectServicesMock = Mockito.mock(ProjectServicesImpl.class);
     private ProjectController projectController = new ProjectController(projectServicesMock);
@@ -32,7 +32,7 @@ public class ProjectControllerTests {
         Project testProject = new Project("test", "abc.com", "abc.com", "CO", "testDesc",financeTest);
         when(projectServicesMock.createProject(Mockito.any())).thenReturn(testProject);
         ResponseEntity<Object> httpResponse = projectController.createProject(new ProjectRequest(testProject));
-        Assertions.assertEquals(httpResponse.getStatusCode(), HttpStatus.CREATED);
+        Assertions.assertEquals(HttpStatus.CREATED,httpResponse.getStatusCode());
     }
 
 }

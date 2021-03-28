@@ -10,33 +10,15 @@ import java.io.Serializable;
 
 public class ProjectRequest implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Getter @Setter
+    private static final long serialVersionUID = 2L;
     private String id;
-    @Getter @Setter
     private String name;
-    @Getter @Setter
     private String image;
-    @Getter @Setter
     private String video;
-    @Getter @Setter
     private String country;
-    @Getter @Setter
     private String description;
-    @Getter @Setter
     private Finance finance;
 
-    public ProjectRequest(){
-    }
-    public ProjectRequest(String id, String name, String image, String video, String country, String description, Finance finance) {
-        this.id = id;
-        this.name = name;
-        this.image = image;
-        this.video = video;
-        this.country = country;
-        this.description = description;
-        this.finance = finance;
-    }
     public ProjectRequest(Project project){
         this.id = project.getId();
         this.name = project.getName();
@@ -48,5 +30,61 @@ public class ProjectRequest implements Serializable {
     }
     public Project toProject (){
         return new Project(name,image,video,country,description,finance);
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getVideo() {
+        return video;
+    }
+
+    public void setVideo(String video) {
+        this.video = video;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Finance getFinance() {
+        return finance;
+    }
+
+    public void setFinance(Finance finance) {
+        this.finance = finance;
     }
 }
