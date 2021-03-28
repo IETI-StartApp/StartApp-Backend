@@ -18,7 +18,7 @@ import static org.mockito.Mockito.when;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ProjectServiceTests {
+class ProjectServiceTests {
 
     private ProjectRepository projectRepositoryMock = Mockito.mock(ProjectRepository.class);
     private IProjectServices projectServices = new ProjectServicesImpl(projectRepositoryMock);
