@@ -6,6 +6,8 @@ import edu.escuelaing.ieti.startapp.business.services.projectservices.IProjectSe
 import edu.escuelaing.ieti.startapp.business.services.projectservices.impl.ProjectServicesImpl;
 import edu.escuelaing.ieti.startapp.web.controllers.ProjectController;
 import edu.escuelaing.ieti.startapp.web.requests.ProjectRequest;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 import org.mockito.Mockito;
@@ -27,17 +29,22 @@ class ProjectControllerTests {
 
     private IProjectServices projectServicesMock = Mockito.mock(ProjectServicesImpl.class);
     private ProjectController projectController = new ProjectController(projectServicesMock);
-    @MockBean
-    private BindingResult bindingResult;
+    private BindingResult result;
+    private Project testProject1;
+    @BeforeEach
+    public void setUp(){
+        Finance testFinance = new Finance(1L,2,1L,2L,new Date(),new Date());
+        testProject1 = new Project("test", "abc.com", "abc.com", "CO", "testDesc",testFinance);
+        testProject1.setId("id123");
+        when(projectServicesMock.createProject(Mockito.any())).thenReturn(testProject1);
+        result = Mockito.mock(BindingResult.class);
+        when(result.hasErrors()).thenReturn(true);
+
+    }
     @Test
-    void shouldCreateProject() {
-        Finance financeTest = new Finance(1L,2,1L,2L,new Date(),new Date());
-        Project testProject = new Project("test", "abc.com", "abc.com", "CO", "testDesc",financeTest);
-        testProject.setId("id123");
-        when(projectServicesMock.createProject(Mockito.any())).thenReturn(testProject);
-        ResponseEntity<Object> httpResponse = projectController.createProject(new ProjectRequest(testProject),bindingResult);
-        Assertions.assertEquals(HttpStatus.CREATED,httpResponse.getStatusCode());
-        Project responseProject = (Project) httpResponse.getBody();
+    void shouldNotCreateProject() {
+        ResponseEntity<Object> httpResponse = projectController.createProject(new ProjectRequest(testProject1),result);
+        Assertions.assertEquals(HttpStatus.BAD_REQUEST,httpResponse.getStatusCode());
     }
 
 

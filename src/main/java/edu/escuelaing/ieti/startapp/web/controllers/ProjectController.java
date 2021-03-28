@@ -27,10 +27,9 @@ public class ProjectController {
     public ResponseEntity<Object> createProject(@Valid @RequestBody ProjectRequest projectRequest, BindingResult result){
         Project project = projectRequest.toProject();
         projectServices.createProject(project);
-        ResponseEntity<Object> response = errorHandler.isValidRequest(result)
+        return errorHandler.isValidRequest(result)
                 ? new ResponseEntity<>(project,HttpStatus.CREATED)
                 : errorHandler.getBadRequest(result);
-        return response;
     }
 
 
