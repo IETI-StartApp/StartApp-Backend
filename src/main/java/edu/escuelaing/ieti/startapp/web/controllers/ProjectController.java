@@ -1,5 +1,6 @@
 package edu.escuelaing.ieti.startapp.web.controllers;
 
+import edu.escuelaing.ieti.startapp.business.exception.ProjectServiceException;
 import edu.escuelaing.ieti.startapp.business.model.Project;
 import edu.escuelaing.ieti.startapp.business.services.projectservices.IProjectServices;
 import edu.escuelaing.ieti.startapp.web.handlers.ErrorHandler;
@@ -9,6 +10,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.validation.Valid;
 
 @RestController
@@ -31,7 +36,22 @@ public class ProjectController {
                 ? new ResponseEntity<>(project,HttpStatus.CREATED)
                 : errorHandler.getBadRequest(result);
     }
-
+    @GetMapping()
+    public ResponseEntity<Object> getAllProyects(){
+    	return new ResponseEntity<>(projectServices.getAllProjects(), HttpStatus.OK);
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<Object> getProyectById(@Valid @PathVariable String id){
+    	ResponseEntity<Object> responseEntity; 
+    	try {
+    		responseEntity =  new ResponseEntity<>(projectServices.getProyectById(id),HttpStatus.OK);
+		} catch (ProjectServiceException e) {
+			Map<String, String> error = new HashMap<>(); 
+			error.put("Error", e.getMessage());
+			responseEntity =  new ResponseEntity<>(error,HttpStatus.NOT_FOUND);
+		}
+    	return responseEntity;
+    }
 
 
 }
