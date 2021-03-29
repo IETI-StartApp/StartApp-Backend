@@ -30,9 +30,8 @@ public class ProjectServicesImpl implements IProjectServices {
     }
 	@Override
 	public Project getProyectById(String id) throws ProjectServiceException {
-		Project project = projectRepository.findById(id)
+		return projectRepository.findById(id)
 				.orElseThrow(() ->
 				new ProjectServiceException(ProjectServiceException.PROJECT_NOT_FOUND_EXCEPTION));
-		return project;
 	}
 }

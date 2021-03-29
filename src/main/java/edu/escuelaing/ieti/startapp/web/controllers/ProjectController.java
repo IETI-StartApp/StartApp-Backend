@@ -44,11 +44,11 @@ public class ProjectController {
     public ResponseEntity<Object> getProyectById(@Valid @PathVariable String id){
     	ResponseEntity<Object> responseEntity; 
     	try {
-    		responseEntity =  new ResponseEntity<Object>(projectServices.getProyectById(id),HttpStatus.OK);
+    		responseEntity =  new ResponseEntity<>(projectServices.getProyectById(id),HttpStatus.OK);
 		} catch (ProjectServiceException e) {
 			Map<String, String> error = new HashMap<>(); 
 			error.put("Error", e.getMessage());
-			responseEntity =  new ResponseEntity<Object>(error,HttpStatus.NOT_FOUND);
+			responseEntity =  new ResponseEntity<>(error,HttpStatus.NOT_FOUND);
 		}
     	return responseEntity;
     }
