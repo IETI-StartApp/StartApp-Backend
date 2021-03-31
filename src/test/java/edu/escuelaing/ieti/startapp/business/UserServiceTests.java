@@ -40,6 +40,7 @@ class UserServiceTests {
 		try {
 			User user = userServices.createUser(user1);
 			Assertions.assertEquals(user1, user);
+			Assertions.assertEquals(user1.getId(), user.getId());
 		} catch (UserServiceException e) {
 			Assertions.fail();
 		}
@@ -110,6 +111,14 @@ class UserServiceTests {
 		
 		user1 = new User("test", "test", "test@gmail.com", 1111111111, UserRole.INVESTOR, "This is a test", projects);
 		user2 = new User("test", "test", "test@gmail.com", 1111111112, UserRole.INVESTOR, "This is a test", projects);
+		user2.setFirstName(user2.getFirstName());
+		user2.setLastName(user2.getLastName());
+		user2.setEmail(user2.getEmail());
+		user2.setIdentification(user2.getIdentification());
+		user2.setRole(user2.getRole());
+		user2.setDescription(user2.getDescription());
+		user2.setProjects(user2.getProjects());
+		
 		user1.setId("test");
 		users.add(user1);
 		users.add(user2);
