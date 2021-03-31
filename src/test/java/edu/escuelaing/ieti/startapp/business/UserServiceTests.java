@@ -15,7 +15,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import edu.escuelaing.ieti.startapp.business.exception.UserServiceException;
 import edu.escuelaing.ieti.startapp.business.model.Project;
-import edu.escuelaing.ieti.startapp.business.model.Ticket;
 import edu.escuelaing.ieti.startapp.business.model.User;
 import edu.escuelaing.ieti.startapp.business.model.enums.UserRole;
 import edu.escuelaing.ieti.startapp.business.repositories.UserRepository;
@@ -27,7 +26,7 @@ import edu.escuelaing.ieti.startapp.business.services.projectservices.impl.UserS
 class UserServiceTests {
 	private UserRepository userRepositoryMock = Mockito.mock(UserRepository.class);
 	private UserServices userServices = new UserServicesImpl(userRepositoryMock);
-	private User user1, user2, userBad;
+	private User user1, user2;
 	private List<User> users;
 
 	@BeforeEach
@@ -108,12 +107,9 @@ class UserServiceTests {
 	private void setUpProjects() {
 		users = new ArrayList<User>();
 		List<Project> projects = new ArrayList<Project>();
-		List<Ticket> tickets = new ArrayList<Ticket>();
-		user1 = new User("test", "test", "test@gmail.com", 1111111111, UserRole.INVESTOR, "This is a test", projects,
-				tickets);
-		user2 = new User("test", "test", "test@gmail.com", 1111111112, UserRole.INVESTOR, "This is a test", projects,
-				tickets);
-		userBad = new User("test", "test", "test", -1111111112, UserRole.INVESTOR, "This is a test", projects, tickets);
+		
+		user1 = new User("test", "test", "test@gmail.com", 1111111111, UserRole.INVESTOR, "This is a test", projects);
+		user2 = new User("test", "test", "test@gmail.com", 1111111112, UserRole.INVESTOR, "This is a test", projects);
 		user1.setId("test");
 		users.add(user1);
 		users.add(user2);

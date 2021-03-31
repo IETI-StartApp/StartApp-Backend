@@ -27,11 +27,13 @@ import edu.escuelaing.ieti.startapp.web.requests.UserRequest;
 public class UserController {
 	private final ErrorHandler errorHandler;
 	private final UserServices userServices;
+	private String key;
 
 	@Autowired
 	public UserController(UserServices userServices) {
 		errorHandler = new ErrorHandler();
 		this.userServices = userServices;
+		key= "Error";
 	}
 
 	@PostMapping()
@@ -61,7 +63,7 @@ public class UserController {
 			responseEntity = new ResponseEntity<>(userServices.getUserById(id), HttpStatus.OK);
 		} catch (UserServiceException e) {
 			Map<String, String> error = new HashMap<>();
-			error.put("Error", e.getMessage());
+			error.put(key, e.getMessage());
 			responseEntity = new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
 		}
 		return responseEntity;
@@ -74,7 +76,7 @@ public class UserController {
 			responseEntity = new ResponseEntity<>(userServices.getUserByIdentificationAndRole(identification, role), HttpStatus.OK);
 		} catch (UserServiceException e) {
 			Map<String, String> error = new HashMap<>();
-			error.put("Error", e.getMessage());
+			error.put(key, e.getMessage());
 			responseEntity = new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
 		}
 		return responseEntity;
@@ -86,7 +88,7 @@ public class UserController {
 			responseEntity = new ResponseEntity<>(userServices.getUserByRole(role), HttpStatus.OK);
 		}catch (UserServiceException e) {
 			Map<String, String> error = new HashMap<>();
-			error.put("Error", e.getMessage());
+			error.put(key, e.getMessage());
 			responseEntity = new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
 		}
 		return responseEntity;

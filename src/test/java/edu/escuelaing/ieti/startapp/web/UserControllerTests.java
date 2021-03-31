@@ -21,10 +21,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 
-import edu.escuelaing.ieti.startapp.business.exception.ProjectServiceException;
 import edu.escuelaing.ieti.startapp.business.exception.UserServiceException;
 import edu.escuelaing.ieti.startapp.business.model.Project;
-import edu.escuelaing.ieti.startapp.business.model.Ticket;
 import edu.escuelaing.ieti.startapp.business.model.User;
 import edu.escuelaing.ieti.startapp.business.model.enums.UserRole;
 import edu.escuelaing.ieti.startapp.business.services.projectservices.UserServices;
@@ -193,12 +191,9 @@ class UserControllerTests {
 	private void initializeUser() {
 		users = new ArrayList<User>();
 		List<Project> projects = new ArrayList<Project>();
-		List<Ticket> tickets = new ArrayList<Ticket>();
-		user1 = new User("test", "test", "test@gmail.com", 1111111111, UserRole.INVESTOR, "This is a test", projects,
-				tickets);
-		user2 = new User("test", "test", "test@gmail.com", 1111111112, UserRole.INVESTOR, "This is a test", projects,
-				tickets);
-		userBad = new User("test", "test", "test", -1111111112, UserRole.INVESTOR, "This is a test", projects, tickets);
+		user1 = new User("test", "test", "test@gmail.com", 1111111111, UserRole.INVESTOR, "This is a test", projects);
+		user2 = new User("test", "test", "test@gmail.com", 1111111112, UserRole.INVESTOR, "This is a test", projects);
+		userBad = new User("test", "test", "test", -1111111112, UserRole.INVESTOR, "This is a test", projects);
 		user1.setId("test");
 		users.add(user1);
 		users.add(user2);

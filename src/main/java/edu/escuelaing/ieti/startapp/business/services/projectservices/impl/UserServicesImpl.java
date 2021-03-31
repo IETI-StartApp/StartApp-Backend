@@ -25,7 +25,7 @@ public class UserServicesImpl implements UserServices {
 
 	@Override
 	public User createUser(User user) throws UserServiceException{
-		try {
+		try {	
 			userRepository.save(user);
 		} catch (DuplicateKeyException e) {
 			throw new UserServiceException(UserServiceException.USER_REPEATED_EXCEPTION);
