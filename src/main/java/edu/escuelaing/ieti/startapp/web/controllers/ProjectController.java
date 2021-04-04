@@ -31,10 +31,14 @@ public class ProjectController {
     @PostMapping()
     public ResponseEntity<Object> createProject(@Valid @RequestBody ProjectRequest projectRequest, BindingResult result){
         Project project = projectRequest.toProject();
-        projectServices.createProject(project);
-        return errorHandler.isValidRequest(result)
-                ? new ResponseEntity<>(project,HttpStatus.CREATED)
-                : errorHandler.getBadRequest(result);
+        ResponseEntity<Object> response;
+        if (errorHandler.isValidRequest(result)){
+            projectServices.createProject(project);
+            response = new ResponseEntity<>(project,HttpStatus.CREATED);
+        }else{
+            response = errorHandler.getBadRequest(result);
+        }
+        return response;
     }
     @GetMapping()
     public ResponseEntity<Object> getAllProyects(){
