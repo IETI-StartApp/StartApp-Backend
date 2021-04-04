@@ -5,6 +5,7 @@ import com.amazonaws.services.s3.model.*;
 import edu.escuelaing.ieti.startapp.business.exception.FileServiceException;
 import edu.escuelaing.ieti.startapp.business.services.fileservices.IFileService;
 import edu.escuelaing.ieti.startapp.clients.S3Client;
+import edu.escuelaing.ieti.startapp.web.requests.UploadFileRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -16,27 +17,36 @@ import java.util.List;
 public class FileServiceImpl implements IFileService {
     private final S3Client s3Client;
     private final List<String> imageTypes;
+    private final List<String> documentTypes;
     public FileServiceImpl(){
         s3Client = S3Client.getInstance();
         imageTypes = Arrays.asList("image/png", "image/jpeg", "image/jpg", "image/gif");
+        documentTypes = Arrays.asList("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                "application/pdf", "application/vnd.openxmlformats-officedocument.wordprocessingml.document");
     }
 
     @Override
-    public String uploadImage(String bucketName, String fileName, MultipartFile multipartFile) throws FileServiceException {
+    public String uploadFile(UploadFileRequest request, MultipartFile multipartFile) throws FileServiceException {
 
         String fileUrl;
-        String mimeType = generateMimeType("image",fileName);
-        if (isImage(mimeType)){
-            try {
-                fileUrl = uploadFileWithPublicAccess(bucketName, fileName, multipartFile);
-            } catch (IOException e) {
-                throw new FileServiceException(FileServiceException.UPLOAD_ERROR);
-            }
+        if (isValid(multipartFile.getContentType(),request.getType())){
+            fileUrl = upload(request.getFolder(), request.getFilename(), multipartFile);
         }else{
-            throw new FileServiceException(FileServiceException.INVALID_IMAGE);
+            throw new FileServiceException(FileServiceException.INVALID_EXTENSION);
         }
         return fileUrl;
     }
+
+    private String upload(String bucketName, String fileName, MultipartFile multipartFile) throws FileServiceException {
+        String fileUrl;
+        try {
+            fileUrl = uploadFileWithPublicAccess(bucketName, fileName, multipartFile);
+        } catch (IOException e) {
+            throw new FileServiceException(FileServiceException.UPLOAD_ERROR);
+        }
+        return fileUrl;
+    }
+
     private String uploadFileWithPublicAccess (String bucketName, String fileName, MultipartFile multipartFile) throws IOException {
         AmazonS3 connection = s3Client.getConnection();
         ObjectMetadata metadata = new ObjectMetadata();
@@ -48,11 +58,16 @@ public class FileServiceImpl implements IFileService {
         connection.putObject(fileRequest);
         return connection.getUrl(bucketName,fileName).toExternalForm();
     }
-    private boolean isImage(String contentType){
-        return imageTypes.contains(contentType.toLowerCase().trim());
-    }
-    private String generateMimeType(String type, String fileName){
-        String extension = fileName.substring(fileName.lastIndexOf(".") + 1);
-        return String.format("%s/%s",type,extension);
+
+    private boolean isValid(String contentType,String requestType){
+        switch (requestType){
+            case "IMAGE":
+                return imageTypes.contains(contentType);
+            case "DOCUMENT":
+                return documentTypes.contains(contentType);
+            default:
+                return false;
+        }
+
     }
 }

@@ -2,13 +2,11 @@ package edu.escuelaing.ieti.startapp.web.controllers;
 
 import edu.escuelaing.ieti.startapp.business.exception.FileServiceException;
 import edu.escuelaing.ieti.startapp.business.services.fileservices.IFileService;
+import edu.escuelaing.ieti.startapp.web.requests.UploadFileRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.HashMap;
@@ -23,13 +21,13 @@ public class UploadFileController {
     public UploadFileController(IFileService fileService) {
         this.fileService = fileService;
     }
-    @PostMapping("/image")
-    public ResponseEntity<Object> uploadImage(@RequestParam("folder")String folder,
-                                              @RequestParam("fileName") String fileName,
-                                              @RequestParam("file") MultipartFile image){
+    @PostMapping()
+    public ResponseEntity<Object> uploadImage(@RequestPart("config") UploadFileRequest request,
+                                              @RequestPart("file") MultipartFile file
+                                              ){
         ResponseEntity<Object> response;
         try {
-            String fileUrl = fileService.uploadImage("ieti-2021/"+folder,fileName.toLowerCase(),image);
+            String fileUrl = fileService.uploadFile(request,file);
             response =  new ResponseEntity<>(fileUrl,HttpStatus.CREATED);
         } catch (FileServiceException e) {
             Map<String,Object> errorResponse = new HashMap<>();
