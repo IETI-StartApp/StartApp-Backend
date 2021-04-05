@@ -76,7 +76,7 @@ class ProjectControllerTests {
 		Assertions.assertEquals(projects, httpResponse.getBody());
 	}
     @Test
-    void shouldGetProjectById() {
+	void shouldGetProjectById() {
     	try {
 			when(projectServicesMock.getProyectById(Mockito.anyString())).thenReturn(testProject2);
 			ResponseEntity<Object> httpResponse = projectController.getProyectById(testProject2.getId());
