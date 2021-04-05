@@ -22,7 +22,7 @@ import static org.mockito.Mockito.when;
 @SpringBootTest
 @AutoConfigureMockMvc
 
-public class UploadFileControllerTests {
+class UploadFileControllerTests {
 
     private IFileService fileService = Mockito.mock(FileServiceImpl.class);
     private UploadFileController uploadFileController = new UploadFileController(fileService);
@@ -34,7 +34,7 @@ public class UploadFileControllerTests {
         UploadFileRequest request = new UploadFileRequest("ieti-2021/tests","example.pdf","DOCUMENT");
         when(fileService.uploadFile(Mockito.any(),Mockito.any())).thenReturn("s3.amazonaws.com/ieti-2021/test/example.docx");
         ResponseEntity<Object> response = uploadFileController.uploadFile(request,file);
-        Assertions.assertEquals(response.getStatusCode(), HttpStatus.CREATED);
+        Assertions.assertEquals(HttpStatus.CREATED,response.getStatusCode());
     }
     @Test
     void shouldNotUploadFile() throws FileServiceException {
@@ -42,7 +42,7 @@ public class UploadFileControllerTests {
         UploadFileRequest request = new UploadFileRequest("ieti-2021/tests","example.jpgh","IMAGE");
         when(fileService.uploadFile(Mockito.any(),Mockito.any())).thenThrow(new FileServiceException(FileServiceException.INVALID_EXTENSION));
         ResponseEntity<Object> response = uploadFileController.uploadFile(request,file);
-        Assertions.assertEquals(response.getStatusCode(), HttpStatus.BAD_REQUEST);
+        Assertions.assertEquals(HttpStatus.BAD_REQUEST,response.getStatusCode());
     }
 
 }

@@ -15,14 +15,13 @@ import org.mockito.Mockito;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.AnonymousAWSCredentials;
 import com.amazonaws.client.builder.AwsClientBuilder.EndpointConfiguration;
-import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import io.findify.s3mock.S3Mock;
 import org.springframework.mock.web.MockMultipartFile;
 
 import static org.mockito.Mockito.when;
 
-public class FileServiceTests {
+class FileServiceTests {
     static S3Mock mockS3;
     static S3Client mockS3Client = Mockito.mock(S3Client.class);
     IFileService fileService = new FileServiceImpl(mockS3Client);
@@ -44,7 +43,7 @@ public class FileServiceTests {
     @Test
     void shouldStartEmbeddedS3(){
         AmazonS3 s3Client = mockS3Client.getConnection();
-        Assertions.assertEquals(s3Client.getRegionName(),"us-east-1");
+        Assertions.assertEquals("us-east-1",s3Client.getRegionName());
     }
     @Test
     void shouldUploadDocumentFile() throws FileServiceException {
@@ -67,7 +66,7 @@ public class FileServiceTests {
         try {
             fileService.uploadFile(request,file);
         } catch (FileServiceException e) {
-            Assertions.assertEquals(e.getMessage(),FileServiceException.INVALID_EXTENSION);
+            Assertions.assertEquals(FileServiceException.INVALID_EXTENSION,e.getMessage());
         }
     }
     @AfterAll
