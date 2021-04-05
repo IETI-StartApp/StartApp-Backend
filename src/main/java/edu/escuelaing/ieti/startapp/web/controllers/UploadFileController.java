@@ -22,7 +22,7 @@ public class UploadFileController {
         this.fileService = fileService;
     }
     @PostMapping()
-    public ResponseEntity<Object> uploadImage(@RequestPart("config") UploadFileRequest request,
+    public ResponseEntity<Object> uploadFile(@RequestPart("config") UploadFileRequest request,
                                               @RequestPart("file") MultipartFile file
                                               ){
         ResponseEntity<Object> response;
