@@ -3,6 +3,7 @@ package edu.escuelaing.ieti.startapp;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.data.mongodb.core.mapping.event.ValidatingMongoEventListener;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
@@ -21,8 +22,10 @@ public class StartappApplication {
 		return new LocalValidatorFactoryBean();
 	}
 
-	public static void main(String[] args) {
-		SpringApplication.run(StartappApplication.class, args);
+	@Bean
+	public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
+		return new PropertySourcesPlaceholderConfigurer();
 	}
+	public static void main(String[] args) { SpringApplication.run(StartappApplication.class, args); }
 
 }

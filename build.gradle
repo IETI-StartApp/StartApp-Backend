@@ -34,6 +34,10 @@ dependencies {
 	testCompile group: 'junit', name: 'junit', version: '4.12'
 	implementation group: 'org.hibernate', name: 'hibernate-validator', version: '7.0.1.Final'
 	implementation group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
+	implementation platform('com.amazonaws:aws-java-sdk-bom:1.11.+')
+	implementation 'com.amazonaws:aws-java-sdk-s3'
+	testImplementation group: 'io.findify', name: 's3mock_2.12', version: '0.2.5'
+
 }
 
 test {
