@@ -12,16 +12,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class S3Client {
     private static S3Client clientInstance;
-    private String accessKey;
-    private String secretAccessKey;
-    private String sessionToken;
     private final AmazonS3 client;
 
     private S3Client(){
-        accessKey = System.getenv("AWS_ACCESS_KEY_ID");
-        secretAccessKey = System.getenv("AWS_SECRET_ACCESS_KEY");
-        sessionToken = System.getenv("AWS_SECRET_SESSION_TOKEN");
-        AWSCredentials  credentials = new BasicSessionCredentials(accessKey,secretAccessKey,sessionToken);
+        String accessKey = System.getenv("AWS_ACCESS_KEY_ID");
+        String secretAccessKey = System.getenv("AWS_SECRET_ACCESS_KEY");
+        String sessionToken = System.getenv("AWS_SECRET_SESSION_TOKEN");
+        AWSCredentials  credentials = new BasicSessionCredentials(accessKey, secretAccessKey, sessionToken);
         client = AmazonS3ClientBuilder.standard()
                 .withCredentials(new AWSStaticCredentialsProvider(credentials))
                 .withRegion(Regions.US_EAST_1)

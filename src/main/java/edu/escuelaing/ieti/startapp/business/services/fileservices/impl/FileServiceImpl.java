@@ -6,6 +6,7 @@ import edu.escuelaing.ieti.startapp.business.exception.FileServiceException;
 import edu.escuelaing.ieti.startapp.business.services.fileservices.IFileService;
 import edu.escuelaing.ieti.startapp.clients.S3Client;
 import edu.escuelaing.ieti.startapp.web.requests.UploadFileRequest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -18,8 +19,9 @@ public class FileServiceImpl implements IFileService {
     private final S3Client s3Client;
     private final List<String> imageTypes;
     private final List<String> documentTypes;
-    public FileServiceImpl(){
-        s3Client = S3Client.getInstance();
+    @Autowired
+    public FileServiceImpl(S3Client s3Client){
+        this.s3Client = s3Client;
         imageTypes = Arrays.asList("image/png", "image/jpeg", "image/jpg", "image/gif");
         documentTypes = Arrays.asList("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
                 "application/pdf", "application/vnd.openxmlformats-officedocument.wordprocessingml.document");
