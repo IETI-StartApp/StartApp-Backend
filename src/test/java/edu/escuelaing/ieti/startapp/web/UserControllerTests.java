@@ -22,6 +22,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 
+import edu.escuelaing.ieti.startapp.business.exception.ProjectServiceException;
 import edu.escuelaing.ieti.startapp.business.exception.UserServiceException;
 import edu.escuelaing.ieti.startapp.business.model.Finance;
 import edu.escuelaing.ieti.startapp.business.model.Project;
@@ -187,16 +188,21 @@ class UserControllerTests {
 		Assertions.assertEquals(user1, httpResponse.getBody());
 	}
 
-//	@Test
-//	void shoulNotdAddProjectToUser() {
-//		when(userServicesMock.addProject(Mockito.any(), Mockito.any()))
-//				.thenThrow(new UserServiceException(UserServiceException.USER_NOT_FOUND_EXCEPTION), new ProjectServiceException(ProjectServiceException.PROJECT_NOT_FOUND_EXCEPTION));
-//		ResponseEntity<Object> httpResponse = userController.addProjectToUser("fail", "fail");
-//		Assertions.assertEquals(HttpStatus.NOT_FOUND, httpResponse.getStatusCode());
-//		Map<String, String> error = new HashMap<>();
-//		error.put("Error", UserServiceException.USER_NOT_FOUND_EXCEPTION);
-//		Assertions.assertEquals(error, httpResponse.getBody());
-//	}
+	@Test
+	void shoulNotdAddProjectToUser() {
+		try {
+			when(userServicesMock.getUserById(Mockito.anyString()))
+					.thenThrow(new UserServiceException(UserServiceException.USER_NOT_FOUND_EXCEPTION));
+			ResponseEntity<Object> httpResponse = userController.addProjectToUser("fail", "fail");
+			Assertions.assertEquals(HttpStatus.NOT_FOUND, httpResponse.getStatusCode());
+			Map<String, String> error = new HashMap<>();
+			error.put("Error", UserServiceException.USER_NOT_FOUND_EXCEPTION);
+			Assertions.assertEquals(error, httpResponse.getBody());
+		} catch (UserServiceException e) {
+			Assertions.fail();
+		}
+		
+	}
 
 	private void initializeErrors(List<Error> errors) {
 		errors.add(new Error("firstName", "El nombre del usuario debe tener maximo 4 caracteres y minimo 30"));
