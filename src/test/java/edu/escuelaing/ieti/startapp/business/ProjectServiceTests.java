@@ -70,7 +70,12 @@ class ProjectServiceTests {
 			Assertions.assertEquals(ProjectServiceException.PROJECT_NOT_FOUND_EXCEPTION, e.getMessage());
 		}
     }
-
+    @Test
+    void souldAddInversion() {
+    	when(projectRepositoryMock.save(Mockito.any())).thenReturn(testProject1);
+    	 Project project = projectServices.addInversion(testProject1);
+    	 Assertions.assertEquals(project, testProject1);
+    }
     private void updateFinance(Project project){
         Finance finance = project.getFinance();
         finance.setEndDate(new Date());
