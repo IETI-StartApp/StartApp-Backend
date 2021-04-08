@@ -2,7 +2,6 @@ package edu.escuelaing.ieti.startapp.business.services.ticketservices.impl;
 
 import edu.escuelaing.ieti.startapp.business.model.Ticket;
 import edu.escuelaing.ieti.startapp.business.model.User;
-import edu.escuelaing.ieti.startapp.business.model.enums.TicketStatus;
 import edu.escuelaing.ieti.startapp.business.repositories.TicketRepository;
 import edu.escuelaing.ieti.startapp.business.services.ticketservices.ITicketServices;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -3,9 +3,7 @@ package edu.escuelaing.ieti.startapp.business.model;
 import edu.escuelaing.ieti.startapp.business.model.enums.TicketStatus;
 import edu.escuelaing.ieti.startapp.business.model.enums.TicketType;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
