@@ -121,6 +121,7 @@ public class ChatControllerTests {
 			Assertions.fail();
 		}
 	}
+
 	@Test
 	void shouldFindAllMessagesById() {
 		try {
@@ -132,10 +133,12 @@ public class ChatControllerTests {
 			Assertions.fail();
 		}
 	}
+
 	@Test
 	void shouldNotFindAllMessagesById() {
 		try {
-			when(chatServicesMock.findAllMessagesByChat(Mockito.anyString())).thenThrow(new ChatServiceException(ChatServiceException.CHAT_NOT_FOUND));
+			when(chatServicesMock.findAllMessagesByChat(Mockito.anyString()))
+					.thenThrow(new ChatServiceException(ChatServiceException.CHAT_NOT_FOUND));
 			ResponseEntity<Object> httpResponse = chatController.findAllMessagesById("fail");
 			Assertions.assertEquals(HttpStatus.NOT_FOUND, httpResponse.getStatusCode());
 			Map<String, String> error = new HashMap<>();
@@ -143,6 +146,16 @@ public class ChatControllerTests {
 		} catch (ChatServiceException e) {
 			Assertions.fail();
 		}
+	}
+
+	private void updateChat() {
+		chat.getId();
+		chat.setEntrepreneur(chat.getEntrepreneur());
+		chat.setInvestor(chat.getInvestor());
+		chat.setMessages(chat.getMessages());
+		message1.setUser(message1.getUser());
+		message1.setDate(message1.getDate());
+		message1.setMessage(message1.getMessage());
 	}
 
 	private void initializeChat() {
@@ -170,5 +183,6 @@ public class ChatControllerTests {
 		chat = new Chat(user1, user2, messages);
 		chat.setId("test");
 		chats.add(chat);
+		updateChat();
 	}
 }
