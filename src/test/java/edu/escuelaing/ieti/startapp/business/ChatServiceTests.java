@@ -29,7 +29,7 @@ import edu.escuelaing.ieti.startapp.business.services.projectservices.impl.ChatS
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ChatServiceTests {
+class ChatServiceTests {
 	private ChatRepository chatRepositoryMock = Mockito.mock(ChatRepository.class);
 	private ChatServices chatServices = new ChatServicesImpl(chatRepositoryMock);
 	private User user1, user2, userBad;
@@ -59,7 +59,7 @@ public class ChatServiceTests {
 			List<Chat> ChatsTest = chatServices.findAllChatsByUser(userTest);
 			Assertions.fail();
 		} catch (UserServiceException | ChatServiceException e) {
-			Assertions.assertEquals(e.getMessage(), ChatServiceException.CHAT_ROL_NOT_FOUND); 
+			Assertions.assertEquals(ChatServiceException.CHAT_ROL_NOT_FOUND,e.getMessage()); 
 		}
 	}
 	@Test
@@ -91,7 +91,7 @@ public class ChatServiceTests {
 			List<Chat> chatsTest = chatServices.findAllChatsByUser(user1);
 			Assertions.fail();
 		} catch (UserServiceException | ChatServiceException e) {
-			Assertions.assertEquals(e.getMessage(), UserServiceException.ROLE_INCORRECT_EXCEPTION);
+			Assertions.assertEquals(UserServiceException.ROLE_INCORRECT_EXCEPTION, e.getMessage());
 		}
 	}
 
@@ -102,7 +102,7 @@ public class ChatServiceTests {
 			List<Chat> chatsTest = chatServices.findAllChatsByUser(user2);
 			Assertions.fail();
 		} catch (UserServiceException | ChatServiceException e) {
-			Assertions.assertEquals(e.getMessage(), UserServiceException.ROLE_INCORRECT_EXCEPTION);
+			Assertions.assertEquals(UserServiceException.ROLE_INCORRECT_EXCEPTION ,e.getMessage());
 		}
 	}
 
@@ -125,7 +125,7 @@ public class ChatServiceTests {
 			List<Message> messagesTest = chatServices.findAllMessagesByChat("fail");
 			Assertions.fail();
 		} catch (ChatServiceException e) {
-			Assertions.assertEquals(e.getMessage(), ChatServiceException.CHAT_NOT_FOUND);
+			Assertions.assertEquals(ChatServiceException.CHAT_NOT_FOUND, e.getMessage());
 		}
 	}
 
@@ -133,7 +133,7 @@ public class ChatServiceTests {
 	void shouldAddMessage() {
 		when(chatRepositoryMock.save(Mockito.any())).thenReturn(chat);
 		Message messageTest = chatServices.addMessage(user1, chat, "Hola");
-		Assertions.assertEquals(messageTest.getMessage(), "Hola");
+		Assertions.assertEquals(messageTest.getTextmessage(), "Hola");
 	}
 
 	@Test

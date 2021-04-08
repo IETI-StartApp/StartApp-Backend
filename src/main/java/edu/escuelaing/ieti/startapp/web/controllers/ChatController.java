@@ -27,11 +27,13 @@ import edu.escuelaing.ieti.startapp.web.requests.ChatRequest;
 public class ChatController {
 	private final ChatServices chatServices;
 	private final UserServices userServices;
+	private String key;
 
 	@Autowired
 	public ChatController(ChatServices chatServices, UserServices userServices) {
 		this.chatServices = chatServices;
 		this.userServices = userServices;
+		key= "Error";
 	}
 
 	@PostMapping()
@@ -51,7 +53,7 @@ public class ChatController {
 			response = new ResponseEntity<>(chatServices.addMessage(user, chat, message), HttpStatus.ACCEPTED);
 		} catch (UserServiceException | ChatServiceException e) {
 			Map<String, String> error = new HashMap<>();
-			error.put("Error", e.getMessage());
+			error.put(key, e.getMessage());
 			response = new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
 		}
 		return response;
@@ -65,7 +67,7 @@ public class ChatController {
 					HttpStatus.OK);
 		} catch (UserServiceException | ChatServiceException e) {
 			Map<String, String> error = new HashMap<>();
-			error.put("Error", e.getMessage());
+			error.put(key, e.getMessage());
 			response = new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
 		}
 		return response;
@@ -78,7 +80,7 @@ public class ChatController {
 			response = new ResponseEntity<>(chatServices.findChatById(idChat), HttpStatus.OK);
 		} catch (ChatServiceException e) {
 			Map<String, String> error = new HashMap<>();
-			error.put("Error", e.getMessage());
+			error.put(key, e.getMessage());
 			response = new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
 		}
 		return response;
@@ -91,7 +93,7 @@ public class ChatController {
 			response = new ResponseEntity<>(chatServices.findAllMessagesByChat(idChat), HttpStatus.OK);
 		} catch (ChatServiceException e) {
 			Map<String, String> error = new HashMap<>();
-			error.put("Error", e.getMessage());
+			error.put(key, e.getMessage());
 			response = new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
 		}
 		return response;

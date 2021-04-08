@@ -61,12 +61,12 @@ public class ChatServicesImpl implements ChatServices {
 	@Override
 	public Message addMessage(User user, Chat chat, String message) {
 		Date date = new Date();
-		SimpleDateFormat FormatDate = new SimpleDateFormat("hh: mm: ss a dd-MMM-aaaa");
+		SimpleDateFormat formatDate = new SimpleDateFormat("hh: mm: ss a dd-MMM-aaaa");
 		List<Message> messages = chat.getMessages();
-		messages.add(new Message(message, user, FormatDate.format(date).toString()));
+		messages.add(new Message(message, user, formatDate.format(date)));
 		chat.setMessages(messages);
 		chatRepository.save(chat);
-		return new Message(message, user, FormatDate.toString());
+		return new Message(message, user, formatDate.toString());
 	}
 
 	@Override

@@ -35,7 +35,7 @@ import edu.escuelaing.ieti.startapp.web.requests.ChatRequest;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ChatControllerTests {
+class ChatControllerTests {
 	private ChatServices chatServicesMock = Mockito.mock(ChatServices.class);
 	private UserServices userServicesMock = Mockito.mock(UserServicesImpl.class);
 	private ChatController chatController = new ChatController(chatServicesMock, userServicesMock);
@@ -155,7 +155,7 @@ public class ChatControllerTests {
 		chat.setMessages(chat.getMessages());
 		message1.setUser(message1.getUser());
 		message1.setDate(message1.getDate());
-		message1.setMessage(message1.getMessage());
+		message1.setTextmessage(message1.getTextmessage());
 	}
 
 	private void initializeChat() {
