@@ -82,7 +82,7 @@ class ProjectServiceTests {
         finance.setStartDate(new Date());
         finance.setInvestorNumber(4);
         finance.setValue(300000);
-        finance.setValuation(200000);
+        finance.setGoal(200000);
         finance.setMinimumInvestment(200000);
         project.setFinance(finance);
     }
