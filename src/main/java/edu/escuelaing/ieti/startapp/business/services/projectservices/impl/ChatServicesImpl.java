@@ -14,7 +14,6 @@ import edu.escuelaing.ieti.startapp.business.model.Message;
 import edu.escuelaing.ieti.startapp.business.model.User;
 import edu.escuelaing.ieti.startapp.business.repositories.ChatRepository;
 import edu.escuelaing.ieti.startapp.business.services.projectservices.ChatServices;
-import edu.escuelaing.ieti.startapp.business.services.projectservices.UserServices;
 
 @Service
 public class ChatServicesImpl implements ChatServices {
@@ -22,7 +21,7 @@ public class ChatServicesImpl implements ChatServices {
 	private final ChatRepository chatRepository;
 
 	@Autowired
-	public ChatServicesImpl(ChatRepository chatRepository, UserServices userServices) {
+	public ChatServicesImpl(ChatRepository chatRepository) {
 		this.chatRepository = chatRepository;
 	}
 
@@ -40,12 +39,12 @@ public class ChatServicesImpl implements ChatServices {
 		case INVESTOR:
 		case INVESTORPREMIUM:
 			chats = chatRepository.findByInvestor(user)
-					.orElseThrow(() -> new UserServiceException(UserServiceException.ROLE_INCORRECT_EXCEPTION));
+			.orElseThrow(() -> new UserServiceException(UserServiceException.ROLE_INCORRECT_EXCEPTION));
 			break;
 		case ENTREPRENEUR:
 		case ENTREPRENEURPREMIUM:
 			chats = chatRepository.findByEntrepreneur(user)
-					.orElseThrow(() -> new UserServiceException(UserServiceException.ROLE_INCORRECT_EXCEPTION));
+			.orElseThrow(() -> new UserServiceException(UserServiceException.ROLE_INCORRECT_EXCEPTION));
 			break;
 		default:
 			throw new ChatServiceException(ChatServiceException.CHAT_ROL_NOT_FOUND);

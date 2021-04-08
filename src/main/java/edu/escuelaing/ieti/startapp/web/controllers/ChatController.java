@@ -44,7 +44,6 @@ public class ChatController {
 	public ResponseEntity<Object> addMessage(@RequestBody String message, @PathVariable String idChat,
 			@PathVariable String idUser) {
 		ResponseEntity<Object> response;
-
 		User user;
 		try {
 			user = userServices.getUserById(idUser);

@@ -22,7 +22,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 
-import edu.escuelaing.ieti.startapp.business.exception.ProjectServiceException;
 import edu.escuelaing.ieti.startapp.business.exception.UserServiceException;
 import edu.escuelaing.ieti.startapp.business.model.Finance;
 import edu.escuelaing.ieti.startapp.business.model.Project;
