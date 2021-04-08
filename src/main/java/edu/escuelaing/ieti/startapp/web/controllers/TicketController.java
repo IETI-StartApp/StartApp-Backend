@@ -1,10 +1,10 @@
 package edu.escuelaing.ieti.startapp.web.controllers;
 
-import edu.escuelaing.ieti.startapp.RabbitmqConfig;
 import edu.escuelaing.ieti.startapp.business.model.Ticket;
+import edu.escuelaing.ieti.startapp.business.model.User;
 import edu.escuelaing.ieti.startapp.business.services.ticketservices.ITicketServices;
 import edu.escuelaing.ieti.startapp.web.requests.TicketRequest;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import edu.escuelaing.ieti.startapp.web.requests.UserRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +26,23 @@ public class TicketController {
         ticketServices.saveTicket(ticket);
         return new ResponseEntity<>(ticket.getId(), HttpStatus.OK);
     }
+    @GetMapping()
+    public ResponseEntity<Object> getTickets(){
+        return new ResponseEntity<>(ticketServices.getTickets(),HttpStatus.OK);
+    }
+
+    @GetMapping("/Receptor")
+    public ResponseEntity<Object> getTicketByReceptor(@RequestBody UserRequest userRequest){
+        User user = userRequest.toUser();
+        return new ResponseEntity<>(ticketServices.getTicketByReceptor(user),HttpStatus.OK);
+    }
+
+    @GetMapping("/Sender")
+    public ResponseEntity<Object> getTicketBySender(@RequestBody UserRequest userRequest){
+        User user = userRequest.toUser();
+        return new ResponseEntity<>(ticketServices.getTicketBySender(user),HttpStatus.OK);
+    }
+
 
 
 

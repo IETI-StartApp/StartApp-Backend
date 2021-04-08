@@ -1,11 +1,9 @@
 package edu.escuelaing.ieti.startapp.web.requests;
 
-import edu.escuelaing.ieti.startapp.RabbitmqConfig;
 import edu.escuelaing.ieti.startapp.business.model.enums.TicketStatus;
 import edu.escuelaing.ieti.startapp.business.model.enums.TicketType;
 import lombok.*;
 import edu.escuelaing.ieti.startapp.business.model.*;
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
