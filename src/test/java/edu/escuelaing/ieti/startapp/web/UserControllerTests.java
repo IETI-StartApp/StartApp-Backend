@@ -207,7 +207,7 @@ class UserControllerTests {
 	private void initializeErrors(List<Error> errors) {
 		errors.add(new Error("firstName", "El nombre del usuario debe tener maximo 4 caracteres y minimo 30"));
 		errors.add(new Error("lastName", "El nombre del usuario debe tener maximo 4 caracteres y minimo 30"));
-		errors.add(new Error("email", "debe ser una dirección de correo electrónico con formato correcto"));
+		errors.add(new Error("email", "debe ser una direccion de correo electronico con formato correcto"));
 		errors.add(new Error("identification", "La cedula es incorrecta"));
 	}
 
