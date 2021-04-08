@@ -133,7 +133,7 @@ class ChatServiceTests {
 	void shouldAddMessage() {
 		when(chatRepositoryMock.save(Mockito.any())).thenReturn(chat);
 		Message messageTest = chatServices.addMessage(user1, chat, "Hola");
-		Assertions.assertEquals(messageTest.getTextmessage(), "Hola");
+		Assertions.assertEquals("Hola", messageTest.getTextmessage());
 	}
 
 	@Test
@@ -154,7 +154,7 @@ class ChatServiceTests {
 			Chat chatTest = chatServices.findChatById("test");
 			Assertions.fail();
 		} catch (ChatServiceException e) {
-			Assertions.assertEquals(e.getMessage(), ChatServiceException.CHAT_NOT_FOUND);
+			Assertions.assertEquals(ChatServiceException.CHAT_NOT_FOUND, e.getMessage());
 		}
 	}
 
