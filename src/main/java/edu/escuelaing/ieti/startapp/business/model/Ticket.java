@@ -10,8 +10,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
 
-@NoArgsConstructor
-@ToString
 @Document(collection = "tickets")
 public class Ticket {
     private static final long serialVersionUID = 1L;

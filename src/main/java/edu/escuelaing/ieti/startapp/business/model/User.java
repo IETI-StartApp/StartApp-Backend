@@ -13,7 +13,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Document(collection = "users")
-@AllArgsConstructor
 @NoArgsConstructor
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
