@@ -7,8 +7,8 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import edu.escuelaing.ieti.startapp.business.model.Comment;
 import edu.escuelaing.ieti.startapp.business.model.Project;
-import edu.escuelaing.ieti.startapp.business.model.User;
+
 
 public interface CommentRepository extends MongoRepository<Comment, String> {
-	public Optional<List<Comment>> findByIdProject(Project idProject);
+	public Optional<List<Comment>>findByIdProject(Project idProject);
 }

@@ -3,8 +3,6 @@ package edu.escuelaing.ieti.startapp.business.model;
 
 
 import java.io.Serializable;
-import java.util.List;
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -23,14 +21,14 @@ public class Comment implements Serializable {
     @Getter @Setter
     private Project idProject;
     @Getter @Setter
-    private String comment;
+    private String data;
     @Getter @Setter 
     private int rate;
     
-    public Comment(User idUser, Project idProject, String comment, int rate) {
+    public Comment(User idUser, Project idProject, String data, int rate) {
     	this.idUser = idUser;
     	this.idProject = idProject;
-    	this.comment = comment;
+    	this.data = data;
     	this.rate = rate;
     }
 	
