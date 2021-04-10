@@ -23,6 +23,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 
 import edu.escuelaing.ieti.startapp.business.exception.ProjectServiceException;
+import edu.escuelaing.ieti.startapp.business.model.Comment;
 import edu.escuelaing.ieti.startapp.business.model.Finance;
 import edu.escuelaing.ieti.startapp.business.model.Project;
 import edu.escuelaing.ieti.startapp.business.services.projectservices.IProjectServices;
@@ -41,6 +42,7 @@ class ProjectControllerTests {
     private BindingResult result;
     private Project testProject1,testProject2;
 	private List<Project> projects;
+	private List<Comment> comments;
 
     @BeforeEach
     void setUp(){
@@ -116,11 +118,11 @@ class ProjectControllerTests {
     	projects = new ArrayList<Project>();
         Finance testFinance1 = new Finance(1L,2,1L,2L,new Date(),new Date());
         testProject1 = new Project("testProject", "abc.com", "abc.com", "CO",
-                "testDesc",testFinance1);
+                "testDesc",testFinance1, comments);
         testProject1.setId("id123");
         Finance testFinance2 = new Finance(1L,2,1L,200000,new Date(),new Date());
         testProject2 = new Project("testProject", "abc.com", "abc.com", "CO",
-                "A large description to test",testFinance2);
+                "A large description to test",testFinance2, comments);
         testProject2.setId("id1234");
 		projects.add(testProject1);
 		projects.add(testProject2);

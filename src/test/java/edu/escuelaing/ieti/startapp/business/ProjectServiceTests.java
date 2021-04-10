@@ -15,6 +15,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 
 import edu.escuelaing.ieti.startapp.business.exception.ProjectServiceException;
+import edu.escuelaing.ieti.startapp.business.model.Comment;
 import edu.escuelaing.ieti.startapp.business.model.Finance;
 import edu.escuelaing.ieti.startapp.business.model.Project;
 import edu.escuelaing.ieti.startapp.business.repositories.ProjectRepository;
@@ -89,9 +90,10 @@ class ProjectServiceTests {
 
     private void setUpProjects(){
     	projects = new ArrayList<Project>();
+    	List<Comment> comments = new ArrayList<Comment>();
         Finance testFinance1 = new Finance(200000,3,1L,2L,new Date(),new Date());
         testProject1 = new Project("testProject", "abc.com", "abc.com", "CO",
-                "A valid description for a valid project",testFinance1);
+                "A valid description for a valid project",testFinance1, comments);
         testProject1.setId("Test");
         projects.add(testProject1);
     }

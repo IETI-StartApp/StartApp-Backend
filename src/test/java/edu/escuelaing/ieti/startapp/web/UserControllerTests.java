@@ -23,6 +23,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 
 import edu.escuelaing.ieti.startapp.business.exception.UserServiceException;
+import edu.escuelaing.ieti.startapp.business.model.Comment;
 import edu.escuelaing.ieti.startapp.business.model.Finance;
 import edu.escuelaing.ieti.startapp.business.model.Project;
 import edu.escuelaing.ieti.startapp.business.model.User;
@@ -46,6 +47,7 @@ class UserControllerTests {
 	private User user1, user2, userBad;
 	private Project testProject1;
 	private List<User> users;
+	private List<Comment> comments;
 
 	@BeforeEach
 	void setUp() {
@@ -222,7 +224,7 @@ class UserControllerTests {
 		users = new ArrayList<User>();
 		List<Project> projects = new ArrayList<Project>();
 		Finance testFinance1 = new Finance(1L, 2, 1L, 2L, new Date(), new Date());
-		testProject1 = new Project("testProject", "abc.com", "abc.com", "CO", "testDesc", testFinance1);
+		testProject1 = new Project("testProject", "abc.com", "abc.com", "CO", "testDesc", testFinance1, comments);
 		testProject1.setId("test");
 		projects.add(testProject1);
 		user1 = new User("test", "test", "test@gmail.com", 1111111111, UserRole.INVESTOR, "This is a test", projects);
