@@ -3,6 +3,7 @@ package edu.escuelaing.ieti.startapp.web;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -22,10 +23,14 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 
 import edu.escuelaing.ieti.startapp.business.exception.UserServiceException;
+import edu.escuelaing.ieti.startapp.business.model.Comment;
+import edu.escuelaing.ieti.startapp.business.model.Finance;
 import edu.escuelaing.ieti.startapp.business.model.Project;
 import edu.escuelaing.ieti.startapp.business.model.User;
 import edu.escuelaing.ieti.startapp.business.model.enums.UserRole;
+import edu.escuelaing.ieti.startapp.business.services.projectservices.IProjectServices;
 import edu.escuelaing.ieti.startapp.business.services.projectservices.UserServices;
+import edu.escuelaing.ieti.startapp.business.services.projectservices.impl.ProjectServicesImpl;
 import edu.escuelaing.ieti.startapp.business.services.projectservices.impl.UserServicesImpl;
 import edu.escuelaing.ieti.startapp.web.controllers.UserController;
 import edu.escuelaing.ieti.startapp.web.handlers.Error;
@@ -36,10 +41,13 @@ import edu.escuelaing.ieti.startapp.web.requests.UserRequest;
 class UserControllerTests {
 
 	private UserServices userServicesMock = Mockito.mock(UserServicesImpl.class);
-	private UserController userController = new UserController(userServicesMock);
+	private IProjectServices projectServicesMock = Mockito.mock(ProjectServicesImpl.class);
+	private UserController userController = new UserController(userServicesMock, projectServicesMock);
 	private BindingResult result;
 	private User user1, user2, userBad;
+	private Project testProject1;
 	private List<User> users;
+	private List<Comment> comments;
 
 	@BeforeEach
 	void setUp() {
@@ -173,11 +181,37 @@ class UserControllerTests {
 		}
 	}
 
+	@Test
+	void shouldAddProjectToUser() {
+		when(userServicesMock.addProject(Mockito.any(), Mockito.any())).thenReturn(user1);
+		ResponseEntity<Object> httpResponse = userController.addProjectToUser("test", "test");
+		Assertions.assertEquals(HttpStatus.OK, httpResponse.getStatusCode());
+		Assertions.assertEquals(user1, httpResponse.getBody());
+	}
+
+	@Test
+	void shoulNotdAddProjectToUser() {
+		try {
+			when(userServicesMock.getUserById(Mockito.anyString()))
+					.thenThrow(new UserServiceException(UserServiceException.USER_NOT_FOUND_EXCEPTION));
+			ResponseEntity<Object> httpResponse = userController.addProjectToUser("fail", "fail");
+			Assertions.assertEquals(HttpStatus.NOT_FOUND, httpResponse.getStatusCode());
+			Map<String, String> error = new HashMap<>();
+			error.put("Error", UserServiceException.USER_NOT_FOUND_EXCEPTION);
+			Assertions.assertEquals(error, httpResponse.getBody());
+		} catch (UserServiceException e) {
+			Assertions.fail();
+		}
+		
+	}
+
 	private void initializeErrors(List<Error> errors) {
+
 		errors.add(new Error("firstName", "El nombre del usuario debe tener maximo 4 caracteres y mínimo 30"));
 		errors.add(new Error("lastName", "El nombre del usuario debe tener maximo 4 caracteres y mínimo 30"));
 		errors.add(new Error("email", "debe ser una dirección de correo electrónico con formato correcto"));
 		errors.add(new Error("identification", "La cédula es incorrecta"));
+
 	}
 
 	private void setUpMockErrors(List<Error> errors) {
@@ -191,6 +225,10 @@ class UserControllerTests {
 	private void initializeUser() {
 		users = new ArrayList<User>();
 		List<Project> projects = new ArrayList<Project>();
+		Finance testFinance1 = new Finance(1L, 2, 1L, 2L, new Date(), new Date());
+		testProject1 = new Project("testProject", "abc.com", "abc.com", "CO", "testDesc", testFinance1, comments);
+		testProject1.setId("test");
+		projects.add(testProject1);
 		user1 = new User("test", "test", "test@gmail.com", 1111111111, UserRole.INVESTOR, "This is a test", projects);
 		user2 = new User("test", "test", "test@gmail.com", 1111111112, UserRole.INVESTOR, "This is a test", projects);
 		userBad = new User("test", "test", "test", -1111111112, UserRole.INVESTOR, "This is a test", projects);

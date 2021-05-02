@@ -12,12 +12,16 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import edu.escuelaing.ieti.startapp.business.exception.ProjectServiceException;
 import edu.escuelaing.ieti.startapp.business.exception.UserServiceException;
+import edu.escuelaing.ieti.startapp.business.model.Project;
 import edu.escuelaing.ieti.startapp.business.model.User;
+import edu.escuelaing.ieti.startapp.business.services.projectservices.IProjectServices;
 import edu.escuelaing.ieti.startapp.business.services.projectservices.UserServices;
 import edu.escuelaing.ieti.startapp.web.handlers.ErrorHandler;
 import edu.escuelaing.ieti.startapp.web.requests.UserRequest;
@@ -27,12 +31,14 @@ import edu.escuelaing.ieti.startapp.web.requests.UserRequest;
 public class UserController {
 	private final ErrorHandler errorHandler;
 	private final UserServices userServices;
+	private final IProjectServices iProjectServices;
 	private String key;
 
 	@Autowired
-	public UserController(UserServices userServices) {
+	public UserController(UserServices userServices, IProjectServices iProjectServices) {
 		errorHandler = new ErrorHandler();
 		this.userServices = userServices;
+		this.iProjectServices = iProjectServices;
 		key= "Error";
 	}
 
@@ -91,6 +97,20 @@ public class UserController {
 			error.put(key, e.getMessage());
 			responseEntity = new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
 		}
+		return responseEntity;
+	}
+	@PutMapping("/{id}/project/{idProject}")
+	public ResponseEntity<Object> addProjectToUser(@PathVariable String id, @PathVariable String idProject) {
+		ResponseEntity<Object> responseEntity;
+		try {
+			Project project = iProjectServices.addInversion(iProjectServices.getProyectById(idProject));	
+			responseEntity = new ResponseEntity<>(userServices.addProject(userServices.getUserById(id), project),HttpStatus.OK);
+		} catch (ProjectServiceException | UserServiceException e) {
+			Map<String, String> error = new HashMap<>();
+			error.put(key, e.getMessage());
+			responseEntity = new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+		}
+		
 		return responseEntity;
 	}
 }

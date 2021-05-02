@@ -15,6 +15,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 
 import edu.escuelaing.ieti.startapp.business.exception.ProjectServiceException;
+import edu.escuelaing.ieti.startapp.business.model.Comment;
 import edu.escuelaing.ieti.startapp.business.model.Finance;
 import edu.escuelaing.ieti.startapp.business.model.Project;
 import edu.escuelaing.ieti.startapp.business.repositories.ProjectRepository;
@@ -70,23 +71,29 @@ class ProjectServiceTests {
 			Assertions.assertEquals(ProjectServiceException.PROJECT_NOT_FOUND_EXCEPTION, e.getMessage());
 		}
     }
-
+    @Test
+    void souldAddInversion() {
+    	when(projectRepositoryMock.save(Mockito.any())).thenReturn(testProject1);
+    	 Project project = projectServices.addInversion(testProject1);
+    	 Assertions.assertEquals(project, testProject1);
+    }
     private void updateFinance(Project project){
         Finance finance = project.getFinance();
         finance.setEndDate(new Date());
         finance.setStartDate(new Date());
         finance.setInvestorNumber(4);
         finance.setValue(300000);
-        finance.setValuation(200000);
+        finance.setGoal(200000);
         finance.setMinimumInvestment(200000);
         project.setFinance(finance);
     }
 
     private void setUpProjects(){
     	projects = new ArrayList<Project>();
+    	List<Comment> comments = new ArrayList<Comment>();
         Finance testFinance1 = new Finance(200000,3,1L,2L,new Date(),new Date());
         testProject1 = new Project("testProject", "abc.com", "abc.com", "CO",
-                "A valid description for a valid project",testFinance1);
+                "A valid description for a valid project",testFinance1, comments);
         testProject1.setId("Test");
         projects.add(testProject1);
     }

@@ -3,6 +3,7 @@ package edu.escuelaing.ieti.startapp.business;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,6 +15,8 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 
 import edu.escuelaing.ieti.startapp.business.exception.UserServiceException;
+import edu.escuelaing.ieti.startapp.business.model.Comment;
+import edu.escuelaing.ieti.startapp.business.model.Finance;
 import edu.escuelaing.ieti.startapp.business.model.Project;
 import edu.escuelaing.ieti.startapp.business.model.User;
 import edu.escuelaing.ieti.startapp.business.model.enums.UserRole;
@@ -27,6 +30,7 @@ class UserServiceTests {
 	private UserRepository userRepositoryMock = Mockito.mock(UserRepository.class);
 	private UserServices userServices = new UserServicesImpl(userRepositoryMock);
 	private User user1, user2;
+	private Project testProject1;
 	private List<User> users;
 
 	@BeforeEach
@@ -45,6 +49,7 @@ class UserServiceTests {
 			Assertions.fail();
 		}
 	}
+
 	@Test
 	void shouldGetUserById() {
 		when(userRepositoryMock.findById(Mockito.any())).thenReturn(Optional.of(user1));
@@ -55,6 +60,7 @@ class UserServiceTests {
 			Assertions.fail();
 		}
 	}
+
 	@Test
 	void shouldNotGetUserById() {
 		when(userRepositoryMock.findById(Mockito.any())).thenReturn(Optional.empty());
@@ -65,9 +71,11 @@ class UserServiceTests {
 			Assertions.assertEquals(UserServiceException.USER_NOT_FOUND_EXCEPTION, e.getMessage());
 		}
 	}
+
 	@Test
 	void shouldGetUserByIdentificationAndRole() {
-		when(userRepositoryMock.findByIdentificationAndRole(Mockito.anyLong(), Mockito.anyString())).thenReturn(Optional.of(user1));
+		when(userRepositoryMock.findByIdentificationAndRole(Mockito.anyLong(), Mockito.anyString()))
+				.thenReturn(Optional.of(user1));
 		try {
 			User user = userServices.getUserByIdentificationAndRole(user1.getIdentification(), "INVESTOR");
 			Assertions.assertEquals(user1, user);
@@ -75,9 +83,11 @@ class UserServiceTests {
 			Assertions.fail();
 		}
 	}
+
 	@Test
 	void shouldNotGetUserByIdentificationAndRole() {
-		when(userRepositoryMock.findByIdentificationAndRole(Mockito.anyLong(), Mockito.anyString())).thenReturn(Optional.empty());
+		when(userRepositoryMock.findByIdentificationAndRole(Mockito.anyLong(), Mockito.anyString()))
+				.thenReturn(Optional.empty());
 		try {
 			User user = userServices.getUserByIdentificationAndRole(user1.getIdentification(), "INVEST");
 			Assertions.fail();
@@ -85,6 +95,7 @@ class UserServiceTests {
 			Assertions.assertEquals(UserServiceException.USER_NOT_FOUND_EXCEPTION, e.getMessage());
 		}
 	}
+
 	@Test
 	void shouldGetUserByRole() {
 		when(userRepositoryMock.findByRole(Mockito.anyString())).thenReturn(Optional.of(users));
@@ -95,6 +106,7 @@ class UserServiceTests {
 			Assertions.fail();
 		}
 	}
+
 	@Test
 	void shouldNotGetUserByRole() {
 		when(userRepositoryMock.findByRole(Mockito.anyString())).thenReturn(Optional.empty());
@@ -105,10 +117,22 @@ class UserServiceTests {
 			Assertions.assertEquals(UserServiceException.USER_ROLE_NOT_FOUND_EXCEPTION, e.getMessage());
 		}
 	}
+
+	@Test
+	void shouldAddProjectToUser() {
+		when(userRepositoryMock.save(Mockito.any())).thenReturn(user1);
+		User user = userServices.addProject(user1, testProject1);
+		Assertions.assertEquals(user, user1);
+	}
+
 	private void setUpProjects() {
 		users = new ArrayList<User>();
 		List<Project> projects = new ArrayList<Project>();
-		
+		List<Comment> comments = new ArrayList<Comment>();
+		Finance testFinance1 = new Finance(1L, 2, 1L, 2L, new Date(), new Date());
+		testProject1 = new Project("testProject", "abc.com", "abc.com", "CO", "testDesc", testFinance1, comments);
+		testProject1.setId("test");
+		projects.add(testProject1);
 		user1 = new User("test", "test", "test@gmail.com", 1111111111, UserRole.INVESTOR, "This is a test", projects);
 		user2 = new User("test", "test", "test@gmail.com", 1111111112, UserRole.INVESTOR, "This is a test", projects);
 		user2.setFirstName(user2.getFirstName());
@@ -118,7 +142,7 @@ class UserServiceTests {
 		user2.setRole(user2.getRole());
 		user2.setDescription(user2.getDescription());
 		user2.setProjects(user2.getProjects());
-		
+
 		user1.setId("test");
 		users.add(user1);
 		users.add(user2);

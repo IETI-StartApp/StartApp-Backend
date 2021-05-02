@@ -12,4 +12,6 @@ public interface IProjectServices {
 	List<Project> getAllProjects();
 
 	Project getProyectById(String id) throws ProjectServiceException;
+
+	Project addInversion(Project project);
 }

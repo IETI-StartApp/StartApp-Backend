@@ -2,11 +2,12 @@ package edu.escuelaing.ieti.startapp.web.requests;
 
 import edu.escuelaing.ieti.startapp.business.model.Finance;
 import edu.escuelaing.ieti.startapp.business.model.Project;
-
+import edu.escuelaing.ieti.startapp.business.model.Comment;
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.List;
 
 public class ProjectRequest implements Serializable {
 
@@ -23,6 +24,7 @@ public class ProjectRequest implements Serializable {
     private String description;
     @Valid
     private Finance finance;
+    private List<Comment> comments; 
     public ProjectRequest(){
     }
     public ProjectRequest(Project project){
@@ -32,9 +34,10 @@ public class ProjectRequest implements Serializable {
         this.finance = project.getFinance();
         this.description = project.getDescription();
         this.video = project.getVideo();
+        this.comments = project.getComments();
     }
     public Project toProject (){
-        return new Project(name,image,video,country,description,finance);
+        return new Project(name,image,video,country,description,finance, comments);
     }
 
     public String getName() {
@@ -83,5 +86,12 @@ public class ProjectRequest implements Serializable {
 
     public void setFinance(Finance finance) {
         this.finance = finance;
+    }
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComment(List<Comment> comments ) {
+        this.comments = comments;
     }
 }
