@@ -7,12 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import edu.escuelaing.ieti.startapp.business.exception.ChatServiceException;
 import edu.escuelaing.ieti.startapp.business.exception.UserServiceException;
@@ -24,6 +19,7 @@ import edu.escuelaing.ieti.startapp.web.requests.ChatRequest;
 
 @RestController
 @RequestMapping(value = "api/v1/chat")
+@CrossOrigin(origins= "*")
 public class ChatController {
 	private final ChatServices chatServices;
 	private final UserServices userServices;

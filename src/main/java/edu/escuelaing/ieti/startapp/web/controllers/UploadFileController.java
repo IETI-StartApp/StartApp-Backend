@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
+@CrossOrigin(origins= "*")
 @RequestMapping(value = "api/v1/files")
 public class UploadFileController {
     private final IFileService fileService;
@@ -26,8 +27,9 @@ public class UploadFileController {
                                               @RequestPart("file") MultipartFile file
                                               ){
         ResponseEntity<Object> response;
+        request.setFilename(request.getFilename().toLowerCase());
         try {
-            String fileUrl = fileService.uploadFile(request,file);
+            String fileUrl = fileService.uploadFile(request,file).toLowerCase();
             response =  new ResponseEntity<>(fileUrl,HttpStatus.CREATED);
         } catch (FileServiceException e) {
             Map<String,Object> errorResponse = new HashMap<>();
