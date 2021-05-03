@@ -93,7 +93,7 @@ class ProjectServiceTests {
     	List<Comment> comments = new ArrayList<Comment>();
         Finance testFinance1 = new Finance(200000,3,1L,2L,new Date(),new Date());
         testProject1 = new Project("testProject", "abc.com", "abc.com", "CO",
-                "A valid description for a valid project",testFinance1, comments);
+                "A valid description for a valid project",testFinance1, comments,"test");
         testProject1.setId("Test");
         projects.add(testProject1);
     }
