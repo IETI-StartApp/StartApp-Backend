@@ -17,6 +17,7 @@ public class ProjectRequest implements Serializable {
     private String name;
     private String image;
     private String video;
+    private String idUser;
     @NotEmpty(message = "El proyecto debe tener un país")
     private String country;
     @NotEmpty
@@ -35,12 +36,22 @@ public class ProjectRequest implements Serializable {
         this.description = project.getDescription();
         this.video = project.getVideo();
         this.comments = project.getComments();
+        this.idUser = project.getIdUser();
     }
     public Project toProject (){
-        return new Project(name,image,video,country,description,finance, comments);
+        return new Project(name,image,video,country,description,finance, comments, idUser);
     }
 
-    public String getName() {
+    public String getIdUser() {
+		return idUser;
+	}
+	public void setIdUser(String idUser) {
+		this.idUser = idUser;
+	}
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
+	public String getName() {
         return name;
     }
 

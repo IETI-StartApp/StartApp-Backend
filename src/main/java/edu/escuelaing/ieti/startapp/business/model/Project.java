@@ -26,9 +26,11 @@ public class Project implements Serializable {
     private Finance finance;
     @Getter @Setter 
     private List<Comment> comments;
+    @Getter @Setter
+    private String idUser;
     
 
-    public Project(String name, String image, String video, String country, String description,Finance finance, List<Comment> comments) {
+    public Project(String name, String image, String video, String country, String description,Finance finance, List<Comment> comments, String idUser) {
         this.name = name;
         this.image = image;
         this.video = video;
@@ -36,6 +38,7 @@ public class Project implements Serializable {
         this.description = description;
         this.finance = finance;
         this.comments = comments;
+        this.idUser = idUser; 
     }
 
 
