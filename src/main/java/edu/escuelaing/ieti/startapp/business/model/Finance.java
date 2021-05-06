@@ -17,7 +17,7 @@ public class Finance implements Serializable {
     @Min(value = 1,message = "EL proyecto debe tener mínimo un inversionista.")
     private int investorNumber;
     @Getter @Setter
-    private long goal;
+    private long valuation;
     @Getter @Setter
     @Min(value = 100000,message = "La inversión mínima debe ser mayor a 100000")
     private long minimumInvestment;
@@ -29,7 +29,7 @@ public class Finance implements Serializable {
     public Finance(long value, int investorNumber, long valuation, long minimumInvestment, Date startDate, Date endDate) {
         this.value = value;
         this.investorNumber = investorNumber;
-        this.goal = valuation;
+        this.valuation = valuation;
         this.minimumInvestment = minimumInvestment;
         this.startDate = startDate;
         this.endDate = endDate;

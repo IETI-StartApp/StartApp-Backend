@@ -23,6 +23,7 @@ import edu.escuelaing.ieti.startapp.business.services.projectservices.IProjectSe
 import edu.escuelaing.ieti.startapp.web.handlers.ErrorHandler;
 import edu.escuelaing.ieti.startapp.web.requests.ProjectRequest;
 
+@CrossOrigin(origins= "*")
 @RestController
 @RequestMapping(value = "api/v1/projects")
 public class ProjectController {
@@ -53,17 +54,17 @@ public class ProjectController {
     }
     @GetMapping("/{id}")
     public ResponseEntity<Object> getProyectById(@Valid @PathVariable String id){
-    	ResponseEntity<Object> responseEntity; 
+    	ResponseEntity<Object> responseEntity;
     	try {
     		responseEntity =  new ResponseEntity<>(projectServices.getProyectById(id),HttpStatus.OK);
 		} catch (ProjectServiceException e) {
-			Map<String, String> error = new HashMap<>(); 
+			Map<String, String> error = new HashMap<>();
 			error.put("Error", e.getMessage());
 			responseEntity =  new ResponseEntity<>(error,HttpStatus.NOT_FOUND);
 		}
     	return responseEntity;
     }
-    
+
 
 
 }
