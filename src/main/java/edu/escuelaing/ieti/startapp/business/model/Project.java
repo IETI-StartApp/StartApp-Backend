@@ -1,12 +1,14 @@
 package edu.escuelaing.ieti.startapp.business.model;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.annotation.Id;
 import java.io.Serializable;
 import java.util.List;
 @Document(collection = "projects")
+@NoArgsConstructor
 public class Project implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -27,10 +29,10 @@ public class Project implements Serializable {
     @Getter @Setter 
     private List<Comment> comments;
     @Getter @Setter
-    private User User;
+    private User user;
     
 
-    public Project(String name, String image, String video, String country, String description,Finance finance, List<Comment> comments, User idUser) {
+    public Project(String name, String image, String video, String country, String description,Finance finance, List<Comment> comments, User user) {
         this.name = name;
         this.image = image;
         this.video = video;
@@ -38,7 +40,7 @@ public class Project implements Serializable {
         this.description = description;
         this.finance = finance;
         this.comments = comments;
-        this.User = idUser;
+        this.user = user;
     }
 
 

@@ -44,12 +44,10 @@ public class ProjectRequest implements Serializable {
         return new Project(name,image,video,country,description,finance, comments, user);
     }
 
-    public User getIdUser() {
+    public User getUser() {
 		return user;
 	}
-	public void setIdUser(String idUser) {
-		this.user = user;
-	}
+	public void setUser(User user) { this.user = user; }
 	public void setComments(List<Comment> comments) {
 		this.comments = comments;
 	}
