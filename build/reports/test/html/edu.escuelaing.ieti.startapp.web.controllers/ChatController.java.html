@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ChatController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">startapp</a> &gt; <a href="index.source.html" class="el_package">edu.escuelaing.ieti.startapp.web.controllers</a> &gt; <span class="el_source">ChatController.java</span></div><h1>ChatController.java</h1><pre class="source lang-java linenums">package edu.escuelaing.ieti.startapp.web.controllers;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+
+import edu.escuelaing.ieti.startapp.business.exception.ChatServiceException;
+import edu.escuelaing.ieti.startapp.business.exception.UserServiceException;
+import edu.escuelaing.ieti.startapp.business.model.Chat;
+import edu.escuelaing.ieti.startapp.business.model.User;
+import edu.escuelaing.ieti.startapp.business.services.projectservices.ChatServices;
+import edu.escuelaing.ieti.startapp.business.services.projectservices.UserServices;
+import edu.escuelaing.ieti.startapp.web.requests.ChatRequest;
+
+@RestController
+@RequestMapping(value = &quot;api/v1/chat&quot;)
+@CrossOrigin(origins= &quot;*&quot;)
+public class ChatController {
+	private final ChatServices chatServices;
+	private final UserServices userServices;
+	private String key;
+
+	@Autowired
+<span class="fc" id="L29">	public ChatController(ChatServices chatServices, UserServices userServices) {</span>
+<span class="fc" id="L30">		this.chatServices = chatServices;</span>
+<span class="fc" id="L31">		this.userServices = userServices;</span>
+<span class="fc" id="L32">		key= &quot;Error&quot;;</span>
+<span class="fc" id="L33">	}</span>
+
+	@PostMapping()
+	public ResponseEntity&lt;Object&gt; createChat(@RequestBody ChatRequest chatRequest, BindingResult result) {
+<span class="fc" id="L37">		Chat chat = chatRequest.toChat();</span>
+<span class="fc" id="L38">		return  new ResponseEntity&lt;&gt;(chatServices.createChat(chat), HttpStatus.CREATED);</span>
+	}
+
+	@PostMapping(value = &quot;{idChat}/addMessage/{idUser}&quot;)
+	public ResponseEntity&lt;Object&gt; addMessage(@RequestBody String message, @PathVariable String idChat,
+			@PathVariable String idUser) {
+		ResponseEntity&lt;Object&gt; response;
+		User user;
+		try {
+<span class="fc" id="L47">			user = userServices.getUserById(idUser);</span>
+<span class="fc" id="L48">			Chat chat = chatServices.findChatById(idChat);</span>
+<span class="fc" id="L49">			response = new ResponseEntity&lt;&gt;(chatServices.addMessage(user, chat, message), HttpStatus.ACCEPTED);</span>
+<span class="nc" id="L50">		} catch (UserServiceException | ChatServiceException e) {</span>
+<span class="nc" id="L51">			Map&lt;String, String&gt; error = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L52">			error.put(key, e.getMessage());</span>
+<span class="nc" id="L53">			response = new ResponseEntity&lt;&gt;(error, HttpStatus.NOT_FOUND);</span>
+<span class="fc" id="L54">		}</span>
+<span class="fc" id="L55">		return response;</span>
+	}
+
+	@GetMapping(value = &quot;user/{idUser}&quot;)
+	public ResponseEntity&lt;Object&gt; findAllChatByUser(@PathVariable String idUser) {
+		ResponseEntity&lt;Object&gt; response;
+		try {
+<span class="fc" id="L62">			response = new ResponseEntity&lt;&gt;(chatServices.findAllChatsByUser(userServices.getUserById(idUser)),</span>
+					HttpStatus.OK);
+<span class="fc" id="L64">		} catch (UserServiceException | ChatServiceException e) {</span>
+<span class="fc" id="L65">			Map&lt;String, String&gt; error = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L66">			error.put(key, e.getMessage());</span>
+<span class="fc" id="L67">			response = new ResponseEntity&lt;&gt;(error, HttpStatus.NOT_FOUND);</span>
+<span class="fc" id="L68">		}</span>
+<span class="fc" id="L69">		return response;</span>
+	}
+
+	@GetMapping(value = &quot;/{idChat}&quot;)
+	public ResponseEntity&lt;Object&gt; findChatById(@PathVariable String idChat) {
+		ResponseEntity&lt;Object&gt; response;
+		try {
+<span class="fc" id="L76">			response = new ResponseEntity&lt;&gt;(chatServices.findChatById(idChat), HttpStatus.OK);</span>
+<span class="fc" id="L77">		} catch (ChatServiceException e) {</span>
+<span class="fc" id="L78">			Map&lt;String, String&gt; error = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L79">			error.put(key, e.getMessage());</span>
+<span class="fc" id="L80">			response = new ResponseEntity&lt;&gt;(error, HttpStatus.NOT_FOUND);</span>
+<span class="fc" id="L81">		}</span>
+<span class="fc" id="L82">		return response;</span>
+	}
+
+	@GetMapping(value = &quot;/{idChat}/messages&quot;)
+	public ResponseEntity&lt;Object&gt; findAllMessagesById(@PathVariable String idChat) {
+		ResponseEntity&lt;Object&gt; response;
+		try {
+<span class="fc" id="L89">			response = new ResponseEntity&lt;&gt;(chatServices.findAllMessagesByChat(idChat), HttpStatus.OK);</span>
+<span class="fc" id="L90">		} catch (ChatServiceException e) {</span>
+<span class="fc" id="L91">			Map&lt;String, String&gt; error = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L92">			error.put(key, e.getMessage());</span>
+<span class="fc" id="L93">			response = new ResponseEntity&lt;&gt;(error, HttpStatus.NOT_FOUND);</span>
+<span class="fc" id="L94">		}</span>
+<span class="fc" id="L95">		return response;</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

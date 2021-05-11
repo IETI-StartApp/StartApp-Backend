@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="edu.escuelaing.ieti.startapp.web.ProjectControllerTests" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-05-11T01:04:20" hostname="DESARROLLO148" time="0.056">
+  <properties/>
+  <testcase name="shouldNotCreateProject()" classname="edu.escuelaing.ieti.startapp.web.ProjectControllerTests" time="0.016"/>
+  <testcase name="shouldCreateProject()" classname="edu.escuelaing.ieti.startapp.web.ProjectControllerTests" time="0.009"/>
+  <testcase name="shouldNotGetProjectById()" classname="edu.escuelaing.ieti.startapp.web.ProjectControllerTests" time="0.01"/>
+  <testcase name="shouldGetProjectById()" classname="edu.escuelaing.ieti.startapp.web.ProjectControllerTests" time="0.006"/>
+  <testcase name="shouldGetAllProjects()" classname="edu.escuelaing.ieti.startapp.web.ProjectControllerTests" time="0.007"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

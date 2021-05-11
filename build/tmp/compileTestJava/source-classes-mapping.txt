@@ -1,0 +1,20 @@
+edu/escuelaing/ieti/startapp/business/FileServiceTests.java
+ edu.escuelaing.ieti.startapp.business.FileServiceTests
+edu/escuelaing/ieti/startapp/business/ProjectServiceTests.java
+ edu.escuelaing.ieti.startapp.business.ProjectServiceTests
+edu/escuelaing/ieti/startapp/web/TicketControllerTests.java
+ edu.escuelaing.ieti.startapp.web.TicketControllerTests
+edu/escuelaing/ieti/startapp/web/UserControllerTests.java
+ edu.escuelaing.ieti.startapp.web.UserControllerTests
+edu/escuelaing/ieti/startapp/business/ChatServiceTests.java
+ edu.escuelaing.ieti.startapp.business.ChatServiceTests
+edu/escuelaing/ieti/startapp/business/UserServiceTests.java
+ edu.escuelaing.ieti.startapp.business.UserServiceTests
+edu/escuelaing/ieti/startapp/web/UploadFileControllerTests.java
+ edu.escuelaing.ieti.startapp.web.UploadFileControllerTests
+edu/escuelaing/ieti/startapp/web/ChatControllerTests.java
+ edu.escuelaing.ieti.startapp.web.ChatControllerTests
+edu/escuelaing/ieti/startapp/business/TicketServiceTests.java
+ edu.escuelaing.ieti.startapp.business.TicketServiceTests
+edu/escuelaing/ieti/startapp/web/ProjectControllerTests.java
+ edu.escuelaing.ieti.startapp.web.ProjectControllerTests

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="edu.escuelaing.ieti.startapp.web.ChatControllerTests" tests="8" skipped="0" failures="0" errors="0" timestamp="2021-05-11T01:04:20" hostname="DESARROLLO148" time="0.128">
+  <properties/>
+  <testcase name="shouldNotFindChatById()" classname="edu.escuelaing.ieti.startapp.web.ChatControllerTests" time="0.073"/>
+  <testcase name="shouldFindChatById()" classname="edu.escuelaing.ieti.startapp.web.ChatControllerTests" time="0.006"/>
+  <testcase name="shouldFindAllChatByUser()" classname="edu.escuelaing.ieti.startapp.web.ChatControllerTests" time="0.006"/>
+  <testcase name="shouldCreateChat()" classname="edu.escuelaing.ieti.startapp.web.ChatControllerTests" time="0.009"/>
+  <testcase name="shouldNotFindAllChatByUser()" classname="edu.escuelaing.ieti.startapp.web.ChatControllerTests" time="0.006"/>
+  <testcase name="shouldFindAllMessagesById()" classname="edu.escuelaing.ieti.startapp.web.ChatControllerTests" time="0.006"/>
+  <testcase name="shouldAddMessage()" classname="edu.escuelaing.ieti.startapp.web.ChatControllerTests" time="0.005"/>
+  <testcase name="shouldNotFindAllMessagesById()" classname="edu.escuelaing.ieti.startapp.web.ChatControllerTests" time="0.006"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ChatServicesImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">startapp</a> &gt; <a href="index.source.html" class="el_package">edu.escuelaing.ieti.startapp.business.services.projectservices.impl</a> &gt; <span class="el_source">ChatServicesImpl.java</span></div><h1>ChatServicesImpl.java</h1><pre class="source lang-java linenums">package edu.escuelaing.ieti.startapp.business.services.projectservices.impl;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import edu.escuelaing.ieti.startapp.business.exception.ChatServiceException;
+import edu.escuelaing.ieti.startapp.business.exception.UserServiceException;
+import edu.escuelaing.ieti.startapp.business.model.Chat;
+import edu.escuelaing.ieti.startapp.business.model.Message;
+import edu.escuelaing.ieti.startapp.business.model.User;
+import edu.escuelaing.ieti.startapp.business.repositories.ChatRepository;
+import edu.escuelaing.ieti.startapp.business.services.projectservices.ChatServices;
+
+@Service
+public class ChatServicesImpl implements ChatServices {
+
+	private final ChatRepository chatRepository;
+
+	@Autowired
+<span class="fc" id="L24">	public ChatServicesImpl(ChatRepository chatRepository) {</span>
+<span class="fc" id="L25">		this.chatRepository = chatRepository;</span>
+<span class="fc" id="L26">	}</span>
+
+	@Override
+	public Chat createChat(Chat chat) {
+<span class="fc" id="L30">		chatRepository.save(chat);</span>
+<span class="fc" id="L31">		return chat;</span>
+	}
+
+
+	@Override
+	public List&lt;Chat&gt; findAllChatsByUser(User user) throws UserServiceException, ChatServiceException {
+		List&lt;Chat&gt; chats;
+<span class="fc bfc" id="L38" title="All 3 branches covered.">		switch (user.getRole()) {</span>
+		case INVESTOR:
+		case INVESTORPREMIUM:
+<span class="fc" id="L41">			chats = chatRepository.findByInvestor(user)</span>
+<span class="fc" id="L42">			.orElseThrow(() -&gt; new UserServiceException(UserServiceException.ROLE_INCORRECT_EXCEPTION));</span>
+<span class="fc" id="L43">			break;</span>
+		case ENTREPRENEUR:
+		case ENTREPRENEURPREMIUM:
+<span class="fc" id="L46">			chats = chatRepository.findByEntrepreneur(user)</span>
+<span class="fc" id="L47">			.orElseThrow(() -&gt; new UserServiceException(UserServiceException.ROLE_INCORRECT_EXCEPTION));</span>
+<span class="fc" id="L48">			break;</span>
+		default:
+<span class="fc" id="L50">			throw new ChatServiceException(ChatServiceException.CHAT_ROL_NOT_FOUND);</span>
+		}
+<span class="fc" id="L52">		return chats;</span>
+	}
+
+	@Override
+	public List&lt;Message&gt; findAllMessagesByChat(String idChat) throws ChatServiceException {
+<span class="fc" id="L57">		return chatRepository.findById(idChat)</span>
+<span class="fc" id="L58">				.orElseThrow(() -&gt; new ChatServiceException(ChatServiceException.CHAT_NOT_FOUND)).getMessages();</span>
+	}
+
+	@Override
+	public Message addMessage(User user, Chat chat, String message) {
+<span class="fc" id="L63">		Date date = new Date();</span>
+<span class="fc" id="L64">		SimpleDateFormat formatDate = new SimpleDateFormat(&quot;hh: mm: ss a dd-MMM-aaaa&quot;);</span>
+<span class="fc" id="L65">		List&lt;Message&gt; messages = chat.getMessages();</span>
+<span class="fc" id="L66">		messages.add(new Message(message, user, formatDate.format(date)));</span>
+<span class="fc" id="L67">		chat.setMessages(messages);</span>
+<span class="fc" id="L68">		chatRepository.save(chat);</span>
+<span class="fc" id="L69">		return new Message(message, user, formatDate.toString());</span>
+	}
+
+	@Override
+	public Chat findChatById(String idChat) throws ChatServiceException {
+<span class="fc" id="L74">		return chatRepository.findById(idChat)</span>
+<span class="fc" id="L75">				.orElseThrow(() -&gt; new ChatServiceException(ChatServiceException.CHAT_NOT_FOUND));</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

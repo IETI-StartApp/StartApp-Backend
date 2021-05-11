@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="edu.escuelaing.ieti.startapp.business.UserServiceTests" tests="8" skipped="0" failures="0" errors="0" timestamp="2021-05-11T01:04:20" hostname="DESARROLLO148" time="0.075">
+  <properties/>
+  <testcase name="shouldGetUserById()" classname="edu.escuelaing.ieti.startapp.business.UserServiceTests" time="0.008"/>
+  <testcase name="shouldNotGetUserByRole()" classname="edu.escuelaing.ieti.startapp.business.UserServiceTests" time="0.007"/>
+  <testcase name="shouldGetUserByRole()" classname="edu.escuelaing.ieti.startapp.business.UserServiceTests" time="0.008"/>
+  <testcase name="shouldAddProjectToUser()" classname="edu.escuelaing.ieti.startapp.business.UserServiceTests" time="0.007"/>
+  <testcase name="shouldSaveUser()" classname="edu.escuelaing.ieti.startapp.business.UserServiceTests" time="0.007"/>
+  <testcase name="shouldNotGetUserByIdentificationAndRole()" classname="edu.escuelaing.ieti.startapp.business.UserServiceTests" time="0.007"/>
+  <testcase name="shouldGetUserByIdentificationAndRole()" classname="edu.escuelaing.ieti.startapp.business.UserServiceTests" time="0.008"/>
+  <testcase name="shouldNotGetUserById()" classname="edu.escuelaing.ieti.startapp.business.UserServiceTests" time="0.007"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

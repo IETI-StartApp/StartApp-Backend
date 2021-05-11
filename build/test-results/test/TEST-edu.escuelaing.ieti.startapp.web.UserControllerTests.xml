@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="edu.escuelaing.ieti.startapp.web.UserControllerTests" tests="11" skipped="0" failures="0" errors="0" timestamp="2021-05-11T01:04:20" hostname="DESARROLLO148" time="0.077">
+  <properties/>
+  <testcase name="shouldGetUserById()" classname="edu.escuelaing.ieti.startapp.web.UserControllerTests" time="0.004"/>
+  <testcase name="shoulNotdAddProjectToUser()" classname="edu.escuelaing.ieti.startapp.web.UserControllerTests" time="0.01"/>
+  <testcase name="shouldNotCreateUser()" classname="edu.escuelaing.ieti.startapp.web.UserControllerTests" time="0.007"/>
+  <testcase name="shouldNotGetUserByRole()" classname="edu.escuelaing.ieti.startapp.web.UserControllerTests" time="0.006"/>
+  <testcase name="shouldGetUserByRole()" classname="edu.escuelaing.ieti.startapp.web.UserControllerTests" time="0.004"/>
+  <testcase name="shouldAddProjectToUser()" classname="edu.escuelaing.ieti.startapp.web.UserControllerTests" time="0.005"/>
+  <testcase name="shouldNotCreateUserRepeated()" classname="edu.escuelaing.ieti.startapp.web.UserControllerTests" time="0.007"/>
+  <testcase name="shouldCreateUser()" classname="edu.escuelaing.ieti.startapp.web.UserControllerTests" time="0.005"/>
+  <testcase name="shouldNotGetUserByIdentificationAndRole()" classname="edu.escuelaing.ieti.startapp.web.UserControllerTests" time="0.004"/>
+  <testcase name="shouldGetUserByIdentificationAndRole()" classname="edu.escuelaing.ieti.startapp.web.UserControllerTests" time="0.004"/>
+  <testcase name="shouldNotGetUserById()" classname="edu.escuelaing.ieti.startapp.web.UserControllerTests" time="0.006"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

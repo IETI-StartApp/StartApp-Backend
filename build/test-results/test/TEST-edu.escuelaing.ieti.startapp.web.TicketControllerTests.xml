@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="edu.escuelaing.ieti.startapp.web.TicketControllerTests" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-05-11T01:04:20" hostname="DESARROLLO148" time="0.035">
+  <properties/>
+  <testcase name="shouldGetTickets()" classname="edu.escuelaing.ieti.startapp.web.TicketControllerTests" time="0.007"/>
+  <testcase name="shouldGetTicketBySender()" classname="edu.escuelaing.ieti.startapp.web.TicketControllerTests" time="0.01"/>
+  <testcase name="shouldPublishTicket()" classname="edu.escuelaing.ieti.startapp.web.TicketControllerTests" time="0.007"/>
+  <testcase name="shouldGetTicketsByReceptor()" classname="edu.escuelaing.ieti.startapp.web.TicketControllerTests" time="0.006"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

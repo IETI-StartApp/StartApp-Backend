@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FileServiceImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">startapp</a> &gt; <a href="index.source.html" class="el_package">edu.escuelaing.ieti.startapp.business.services.fileservices.impl</a> &gt; <span class="el_source">FileServiceImpl.java</span></div><h1>FileServiceImpl.java</h1><pre class="source lang-java linenums">package edu.escuelaing.ieti.startapp.business.services.fileservices.impl;
+
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.model.*;
+import edu.escuelaing.ieti.startapp.business.exception.FileServiceException;
+import edu.escuelaing.ieti.startapp.business.services.fileservices.IFileService;
+import edu.escuelaing.ieti.startapp.clients.S3Client;
+import edu.escuelaing.ieti.startapp.web.requests.UploadFileRequest;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
+
+@Service
+public class FileServiceImpl implements IFileService {
+    private final S3Client s3Client;
+    private final List&lt;String&gt; imageTypes;
+    private final List&lt;String&gt; documentTypes;
+    @Autowired
+<span class="fc" id="L23">    public FileServiceImpl(S3Client s3Client){</span>
+<span class="fc" id="L24">        this.s3Client = s3Client;</span>
+<span class="fc" id="L25">        imageTypes = Arrays.asList(&quot;image/png&quot;, &quot;image/jpeg&quot;, &quot;image/jpg&quot;, &quot;image/gif&quot;);</span>
+<span class="fc" id="L26">        documentTypes = Arrays.asList(&quot;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet&quot;,</span>
+                &quot;application/pdf&quot;, &quot;application/vnd.openxmlformats-officedocument.wordprocessingml.document&quot;);
+<span class="fc" id="L28">    }</span>
+
+    @Override
+    public String uploadFile(UploadFileRequest request, MultipartFile multipartFile) throws FileServiceException {
+
+        String fileUrl;
+<span class="fc bfc" id="L34" title="All 2 branches covered.">        if (isValid(multipartFile.getContentType(),request.getType())){</span>
+<span class="fc" id="L35">            fileUrl = upload(request.getFolder(), request.getFilename(), multipartFile);</span>
+        }else{
+<span class="fc" id="L37">            throw new FileServiceException(FileServiceException.INVALID_EXTENSION);</span>
+        }
+<span class="fc" id="L39">        return fileUrl;</span>
+    }
+
+    private String upload(String bucketName, String fileName, MultipartFile multipartFile) throws FileServiceException {
+        String fileUrl;
+        try {
+<span class="fc" id="L45">            fileUrl = uploadFileWithPublicAccess(bucketName, fileName, multipartFile);</span>
+<span class="nc" id="L46">        } catch (IOException e) {</span>
+<span class="nc" id="L47">            throw new FileServiceException(FileServiceException.UPLOAD_ERROR);</span>
+<span class="fc" id="L48">        }</span>
+<span class="fc" id="L49">        return fileUrl;</span>
+    }
+
+    private String uploadFileWithPublicAccess (String bucketName, String fileName, MultipartFile multipartFile) throws IOException {
+<span class="fc" id="L53">        AmazonS3 connection = s3Client.getConnection();</span>
+<span class="fc" id="L54">        ObjectMetadata metadata = new ObjectMetadata();</span>
+<span class="fc" id="L55">        metadata.setContentType(multipartFile.getContentType());</span>
+<span class="fc" id="L56">        metadata.setContentLength(multipartFile.getSize());</span>
+<span class="fc" id="L57">        PutObjectRequest fileRequest = new PutObjectRequest(bucketName,</span>
+<span class="fc" id="L58">                fileName,multipartFile.getInputStream(),metadata)</span>
+<span class="fc" id="L59">                .withCannedAcl(CannedAccessControlList.PublicRead);</span>
+<span class="fc" id="L60">        connection.putObject(fileRequest);</span>
+<span class="fc" id="L61">        return connection.getUrl(bucketName,fileName).toExternalForm();</span>
+    }
+
+    private boolean isValid(String contentType,String requestType){
+<span class="fc bfc" id="L65" title="All 3 branches covered.">        switch (requestType){</span>
+            case &quot;IMAGE&quot;:
+<span class="fc" id="L67">                return imageTypes.contains(contentType);</span>
+            case &quot;DOCUMENT&quot;:
+<span class="fc" id="L69">                return documentTypes.contains(contentType);</span>
+            default:
+<span class="fc" id="L71">                return false;</span>
+        }
+
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="edu.escuelaing.ieti.startapp.web.UploadFileControllerTests" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-05-11T01:04:20" hostname="DESARROLLO148" time="0.011">
+  <properties/>
+  <testcase name="shouldUploadFile()" classname="edu.escuelaing.ieti.startapp.web.UploadFileControllerTests" time="0.006"/>
+  <testcase name="shouldNotUploadFile()" classname="edu.escuelaing.ieti.startapp.web.UploadFileControllerTests" time="0.004"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

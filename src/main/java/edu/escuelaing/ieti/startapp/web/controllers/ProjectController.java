@@ -23,7 +23,7 @@ import edu.escuelaing.ieti.startapp.business.services.projectservices.IProjectSe
 import edu.escuelaing.ieti.startapp.web.handlers.ErrorHandler;
 import edu.escuelaing.ieti.startapp.web.requests.ProjectRequest;
 
-@CrossOrigin(origins= "*")
+
 @RestController
 @RequestMapping(value = "api/v1/projects")
 @CrossOrigin(origins= "*")

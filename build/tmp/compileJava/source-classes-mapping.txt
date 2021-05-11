@@ -1,0 +1,93 @@
+edu/escuelaing/ieti/startapp/clients/S3Client.java
+ edu.escuelaing.ieti.startapp.clients.S3Client
+edu/escuelaing/ieti/startapp/business/services/fileservices/impl/FileServiceImpl.java
+ edu.escuelaing.ieti.startapp.business.services.fileservices.impl.FileServiceImpl
+edu/escuelaing/ieti/startapp/business/services/projectservices/impl/UserServicesImpl.java
+ edu.escuelaing.ieti.startapp.business.services.projectservices.impl.UserServicesImpl
+edu/escuelaing/ieti/startapp/web/requests/TicketRequest.java
+ edu.escuelaing.ieti.startapp.web.requests.TicketRequest
+edu/escuelaing/ieti/startapp/business/model/Comment.java
+ edu.escuelaing.ieti.startapp.business.model.Comment
+edu/escuelaing/ieti/startapp/business/model/User.java
+ edu.escuelaing.ieti.startapp.business.model.User
+edu/escuelaing/ieti/startapp/business/model/Chat.java
+ edu.escuelaing.ieti.startapp.business.model.Chat
+edu/escuelaing/ieti/startapp/business/services/ticketservices/impl/TicketServicesImpl.java
+ edu.escuelaing.ieti.startapp.business.services.ticketservices.impl.TicketServicesImpl
+edu/escuelaing/ieti/startapp/business/services/projectservices/CommentServices.java
+ edu.escuelaing.ieti.startapp.business.services.projectservices.CommentServices
+edu/escuelaing/ieti/startapp/web/requests/ChatRequest.java
+ edu.escuelaing.ieti.startapp.web.requests.ChatRequest
+edu/escuelaing/ieti/startapp/business/repositories/TicketRepository.java
+ edu.escuelaing.ieti.startapp.business.repositories.TicketRepository
+edu/escuelaing/ieti/startapp/business/repositories/ProjectRepository.java
+ edu.escuelaing.ieti.startapp.business.repositories.ProjectRepository
+edu/escuelaing/ieti/startapp/business/repositories/UserRepository.java
+ edu.escuelaing.ieti.startapp.business.repositories.UserRepository
+edu/escuelaing/ieti/startapp/business/services/projectservices/impl/CommentServicesImpl.java
+ edu.escuelaing.ieti.startapp.business.services.projectservices.impl.CommentServicesImpl
+edu/escuelaing/ieti/startapp/business/services/ticketservices/ITicketServices.java
+ edu.escuelaing.ieti.startapp.business.services.ticketservices.ITicketServices
+edu/escuelaing/ieti/startapp/web/controllers/UserController.java
+ edu.escuelaing.ieti.startapp.web.controllers.UserController
+edu/escuelaing/ieti/startapp/web/controllers/TicketController.java
+ edu.escuelaing.ieti.startapp.web.controllers.TicketController
+edu/escuelaing/ieti/startapp/business/repositories/ChatRepository.java
+ edu.escuelaing.ieti.startapp.business.repositories.ChatRepository
+edu/escuelaing/ieti/startapp/web/requests/UserRequest.java
+ edu.escuelaing.ieti.startapp.web.requests.UserRequest
+edu/escuelaing/ieti/startapp/business/model/enums/TicketStatus.java
+ edu.escuelaing.ieti.startapp.business.model.enums.TicketStatus
+edu/escuelaing/ieti/startapp/web/requests/UploadFileRequest.java
+ edu.escuelaing.ieti.startapp.web.requests.UploadFileRequest
+edu/escuelaing/ieti/startapp/web/handlers/Error.java
+ edu.escuelaing.ieti.startapp.web.handlers.Error
+edu/escuelaing/ieti/startapp/business/model/enums/UserRole.java
+ edu.escuelaing.ieti.startapp.business.model.enums.UserRole
+edu/escuelaing/ieti/startapp/business/model/Ticket.java
+ edu.escuelaing.ieti.startapp.business.model.Ticket
+edu/escuelaing/ieti/startapp/business/exception/CommentServiceException.java
+ edu.escuelaing.ieti.startapp.business.exception.CommentServiceException
+edu/escuelaing/ieti/startapp/business/model/Finance.java
+ edu.escuelaing.ieti.startapp.business.model.Finance
+edu/escuelaing/ieti/startapp/web/requests/ProjectRequest.java
+ edu.escuelaing.ieti.startapp.web.requests.ProjectRequest
+edu/escuelaing/ieti/startapp/business/exception/UserServiceException.java
+ edu.escuelaing.ieti.startapp.business.exception.UserServiceException
+edu/escuelaing/ieti/startapp/business/model/Message.java
+ edu.escuelaing.ieti.startapp.business.model.Message
+edu/escuelaing/ieti/startapp/business/exception/ChatServiceException.java
+ edu.escuelaing.ieti.startapp.business.exception.ChatServiceException
+edu/escuelaing/ieti/startapp/web/controllers/ChatController.java
+ edu.escuelaing.ieti.startapp.web.controllers.ChatController
+edu/escuelaing/ieti/startapp/web/controllers/UploadFileController.java
+ edu.escuelaing.ieti.startapp.web.controllers.UploadFileController
+edu/escuelaing/ieti/startapp/business/services/projectservices/ChatServices.java
+ edu.escuelaing.ieti.startapp.business.services.projectservices.ChatServices
+edu/escuelaing/ieti/startapp/business/exception/FileServiceException.java
+ edu.escuelaing.ieti.startapp.business.exception.FileServiceException
+edu/escuelaing/ieti/startapp/business/model/Project.java
+ edu.escuelaing.ieti.startapp.business.model.Project
+edu/escuelaing/ieti/startapp/business/services/fileservices/IFileService.java
+ edu.escuelaing.ieti.startapp.business.services.fileservices.IFileService
+edu/escuelaing/ieti/startapp/web/controllers/ProjectController.java
+ edu.escuelaing.ieti.startapp.web.controllers.ProjectController
+edu/escuelaing/ieti/startapp/web/handlers/ErrorHandler.java
+ edu.escuelaing.ieti.startapp.web.handlers.ErrorHandler
+edu/escuelaing/ieti/startapp/business/exception/ProjectServiceException.java
+ edu.escuelaing.ieti.startapp.business.exception.ProjectServiceException
+edu/escuelaing/ieti/startapp/business/model/enums/TicketType.java
+ edu.escuelaing.ieti.startapp.business.model.enums.TicketType
+edu/escuelaing/ieti/startapp/business/repositories/CommentRepository.java
+ edu.escuelaing.ieti.startapp.business.repositories.CommentRepository
+edu/escuelaing/ieti/startapp/business/services/projectservices/impl/ChatServicesImpl.java
+ edu.escuelaing.ieti.startapp.business.services.projectservices.impl.ChatServicesImpl
+ edu.escuelaing.ieti.startapp.business.services.projectservices.impl.ChatServicesImpl$1
+edu/escuelaing/ieti/startapp/business/services/projectservices/IProjectServices.java
+ edu.escuelaing.ieti.startapp.business.services.projectservices.IProjectServices
+edu/escuelaing/ieti/startapp/business/services/projectservices/UserServices.java
+ edu.escuelaing.ieti.startapp.business.services.projectservices.UserServices
+edu/escuelaing/ieti/startapp/business/services/projectservices/impl/ProjectServicesImpl.java
+ edu.escuelaing.ieti.startapp.business.services.projectservices.impl.ProjectServicesImpl
+edu/escuelaing/ieti/startapp/StartappApplication.java
+ edu.escuelaing.ieti.startapp.StartappApplication
