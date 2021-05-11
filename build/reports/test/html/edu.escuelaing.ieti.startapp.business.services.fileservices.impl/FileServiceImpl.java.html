@@ -55,7 +55,7 @@ public class FileServiceImpl implements IFileService {
 <span class="fc" id="L55">        metadata.setContentType(multipartFile.getContentType());</span>
 <span class="fc" id="L56">        metadata.setContentLength(multipartFile.getSize());</span>
 <span class="fc" id="L57">        PutObjectRequest fileRequest = new PutObjectRequest(bucketName,</span>
-<span class="fc" id="L58">                fileName,multipartFile.getInputStream(),metadata)</span>
+<span class="fc" id="L58">                fileName.toLowerCase(),multipartFile.getInputStream(),metadata)</span>
 <span class="fc" id="L59">                .withCannedAcl(CannedAccessControlList.PublicRead);</span>
 <span class="fc" id="L60">        connection.putObject(fileRequest);</span>
 <span class="fc" id="L61">        return connection.getUrl(bucketName,fileName).toExternalForm();</span>

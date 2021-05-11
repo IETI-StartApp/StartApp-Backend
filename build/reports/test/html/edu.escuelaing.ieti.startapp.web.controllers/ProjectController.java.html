@@ -26,44 +26,43 @@ import edu.escuelaing.ieti.startapp.web.requests.ProjectRequest;
 
 @RestController
 @RequestMapping(value = &quot;api/v1/projects&quot;)
-@CrossOrigin(origins= &quot;*&quot;)
 public class ProjectController {
 
     private final IProjectServices projectServices;
     private final ErrorHandler errorHandler;
     @Autowired
-<span class="fc" id="L35">    public ProjectController(IProjectServices projectServices) {</span>
-<span class="fc" id="L36">        this.projectServices = projectServices;</span>
-<span class="fc" id="L37">        errorHandler = new ErrorHandler();</span>
-<span class="fc" id="L38">    }</span>
+<span class="fc" id="L34">    public ProjectController(IProjectServices projectServices) {</span>
+<span class="fc" id="L35">        this.projectServices = projectServices;</span>
+<span class="fc" id="L36">        errorHandler = new ErrorHandler();</span>
+<span class="fc" id="L37">    }</span>
 
     @PostMapping()
     public ResponseEntity&lt;Object&gt; createProject(@Valid @RequestBody ProjectRequest projectRequest, BindingResult result){
-<span class="fc" id="L42">        Project project = projectRequest.toProject();</span>
+<span class="fc" id="L41">        Project project = projectRequest.toProject();</span>
         ResponseEntity&lt;Object&gt; response;
-<span class="fc bfc" id="L44" title="All 2 branches covered.">        if (errorHandler.isValidRequest(result)){</span>
-<span class="fc" id="L45">            projectServices.createProject(project);</span>
-<span class="fc" id="L46">            response = new ResponseEntity&lt;&gt;(project,HttpStatus.CREATED);</span>
+<span class="fc bfc" id="L43" title="All 2 branches covered.">        if (errorHandler.isValidRequest(result)){</span>
+<span class="fc" id="L44">            projectServices.createProject(project);</span>
+<span class="fc" id="L45">            response = new ResponseEntity&lt;&gt;(project,HttpStatus.CREATED);</span>
         }else{
-<span class="fc" id="L48">            response = errorHandler.getBadRequest(result);</span>
+<span class="fc" id="L47">            response = errorHandler.getBadRequest(result);</span>
         }
-<span class="fc" id="L50">        return response;</span>
+<span class="fc" id="L49">        return response;</span>
     }
     @GetMapping()
     public ResponseEntity&lt;Object&gt; getAllProyects(){
-<span class="fc" id="L54">    	return new ResponseEntity&lt;&gt;(projectServices.getAllProjects(), HttpStatus.OK);</span>
+<span class="fc" id="L53">    	return new ResponseEntity&lt;&gt;(projectServices.getAllProjects(), HttpStatus.OK);</span>
     }
     @GetMapping(&quot;/{id}&quot;)
     public ResponseEntity&lt;Object&gt; getProyectById(@Valid @PathVariable String id){
     	ResponseEntity&lt;Object&gt; responseEntity;
     	try {
-<span class="fc" id="L60">    		responseEntity =  new ResponseEntity&lt;&gt;(projectServices.getProyectById(id),HttpStatus.OK);</span>
-<span class="fc" id="L61">		} catch (ProjectServiceException e) {</span>
-<span class="fc" id="L62">			Map&lt;String, String&gt; error = new HashMap&lt;&gt;();</span>
-<span class="fc" id="L63">			error.put(&quot;Error&quot;, e.getMessage());</span>
-<span class="fc" id="L64">			responseEntity =  new ResponseEntity&lt;&gt;(error,HttpStatus.NOT_FOUND);</span>
-<span class="fc" id="L65">		}</span>
-<span class="fc" id="L66">    	return responseEntity;</span>
+<span class="fc" id="L59">    		responseEntity =  new ResponseEntity&lt;&gt;(projectServices.getProyectById(id),HttpStatus.OK);</span>
+<span class="fc" id="L60">		} catch (ProjectServiceException e) {</span>
+<span class="fc" id="L61">			Map&lt;String, String&gt; error = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L62">			error.put(&quot;Error&quot;, e.getMessage());</span>
+<span class="fc" id="L63">			responseEntity =  new ResponseEntity&lt;&gt;(error,HttpStatus.NOT_FOUND);</span>
+<span class="fc" id="L64">		}</span>
+<span class="fc" id="L65">    	return responseEntity;</span>
     }
 
 

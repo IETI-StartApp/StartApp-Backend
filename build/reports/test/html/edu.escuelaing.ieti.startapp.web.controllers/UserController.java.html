@@ -9,7 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import edu.escuelaing.ieti.startapp.business.exception.ProjectServiceException;
 import edu.escuelaing.ieti.startapp.business.exception.UserServiceException;
@@ -22,7 +28,6 @@ import edu.escuelaing.ieti.startapp.web.requests.UserRequest;
 
 @RestController
 @RequestMapping(value = &quot;api/v1/users&quot;)
-@CrossOrigin(origins= &quot;*&quot;)
 public class UserController {
 	private final ErrorHandler errorHandler;
 	private final UserServices userServices;
@@ -30,83 +35,83 @@ public class UserController {
 	private String key;
 
 	@Autowired
-<span class="fc" id="L33">	public UserController(UserServices userServices, IProjectServices iProjectServices) {</span>
-<span class="fc" id="L34">		errorHandler = new ErrorHandler();</span>
-<span class="fc" id="L35">		this.userServices = userServices;</span>
-<span class="fc" id="L36">		this.iProjectServices = iProjectServices;</span>
-<span class="fc" id="L37">		key= &quot;Error&quot;;</span>
-<span class="fc" id="L38">	}</span>
+<span class="fc" id="L38">	public UserController(UserServices userServices, IProjectServices iProjectServices) {</span>
+<span class="fc" id="L39">		errorHandler = new ErrorHandler();</span>
+<span class="fc" id="L40">		this.userServices = userServices;</span>
+<span class="fc" id="L41">		this.iProjectServices = iProjectServices;</span>
+<span class="fc" id="L42">		key= &quot;Error&quot;;</span>
+<span class="fc" id="L43">	}</span>
 
 	@PostMapping()
 	public ResponseEntity&lt;Object&gt; createUser(@Valid @RequestBody UserRequest userRequest, BindingResult result) {
-<span class="fc" id="L42">		User user = userRequest.toUser();</span>
+<span class="fc" id="L47">		User user = userRequest.toUser();</span>
 		ResponseEntity&lt;Object&gt; responseEntity;
-<span class="fc bfc" id="L44" title="All 2 branches covered.">		if (errorHandler.isValidRequest(result)) {</span>
+<span class="fc bfc" id="L49" title="All 2 branches covered.">		if (errorHandler.isValidRequest(result)) {</span>
 			try {
-<span class="fc" id="L46">				userServices.createUser(user);</span>
-<span class="fc" id="L47">				responseEntity = new ResponseEntity&lt;&gt;(user, HttpStatus.CREATED);</span>
-<span class="fc" id="L48">			} catch (UserServiceException e) {</span>
-<span class="fc" id="L49">				Map&lt;String, String&gt; error = new HashMap&lt;&gt;();</span>
-<span class="fc" id="L50">				error.put(&quot;Error&quot;, e.getMessage());</span>
-<span class="fc" id="L51">				responseEntity = new ResponseEntity&lt;&gt;(error, HttpStatus.NOT_FOUND);</span>
-<span class="fc" id="L52">			}</span>
+<span class="fc" id="L51">				userServices.createUser(user);</span>
+<span class="fc" id="L52">				responseEntity = new ResponseEntity&lt;&gt;(user, HttpStatus.CREATED);</span>
+<span class="fc" id="L53">			} catch (UserServiceException e) {</span>
+<span class="fc" id="L54">				Map&lt;String, String&gt; error = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L55">				error.put(&quot;Error&quot;, e.getMessage());</span>
+<span class="fc" id="L56">				responseEntity = new ResponseEntity&lt;&gt;(error, HttpStatus.NOT_FOUND);</span>
+<span class="fc" id="L57">			}</span>
 			
 		} else {
-<span class="fc" id="L55">			responseEntity = errorHandler.getBadRequest(result);</span>
+<span class="fc" id="L60">			responseEntity = errorHandler.getBadRequest(result);</span>
 		}
-<span class="fc" id="L57">		return responseEntity;</span>
+<span class="fc" id="L62">		return responseEntity;</span>
 	}
 
 	@GetMapping(&quot;/{id}&quot;)
 	public ResponseEntity&lt;Object&gt; getUserById(@Valid @PathVariable String id) {
 		ResponseEntity&lt;Object&gt; responseEntity;
 		try {
-<span class="fc" id="L64">			responseEntity = new ResponseEntity&lt;&gt;(userServices.getUserById(id), HttpStatus.OK);</span>
-<span class="fc" id="L65">		} catch (UserServiceException e) {</span>
-<span class="fc" id="L66">			Map&lt;String, String&gt; error = new HashMap&lt;&gt;();</span>
-<span class="fc" id="L67">			error.put(key, e.getMessage());</span>
-<span class="fc" id="L68">			responseEntity = new ResponseEntity&lt;&gt;(error, HttpStatus.NOT_FOUND);</span>
-<span class="fc" id="L69">		}</span>
-<span class="fc" id="L70">		return responseEntity;</span>
+<span class="fc" id="L69">			responseEntity = new ResponseEntity&lt;&gt;(userServices.getUserById(id), HttpStatus.OK);</span>
+<span class="fc" id="L70">		} catch (UserServiceException e) {</span>
+<span class="fc" id="L71">			Map&lt;String, String&gt; error = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L72">			error.put(key, e.getMessage());</span>
+<span class="fc" id="L73">			responseEntity = new ResponseEntity&lt;&gt;(error, HttpStatus.NOT_FOUND);</span>
+<span class="fc" id="L74">		}</span>
+<span class="fc" id="L75">		return responseEntity;</span>
 	}
 
 	@GetMapping(&quot;/{identification}/{role}&quot;)
 	public ResponseEntity&lt;Object&gt; getUserByIdentificationAndRole(@PathVariable long identification, @PathVariable String role) {
 		ResponseEntity&lt;Object&gt; responseEntity;
 		try {
-<span class="fc" id="L77">			responseEntity = new ResponseEntity&lt;&gt;(userServices.getUserByIdentificationAndRole(identification, role), HttpStatus.OK);</span>
-<span class="fc" id="L78">		} catch (UserServiceException e) {</span>
-<span class="fc" id="L79">			Map&lt;String, String&gt; error = new HashMap&lt;&gt;();</span>
-<span class="fc" id="L80">			error.put(key, e.getMessage());</span>
-<span class="fc" id="L81">			responseEntity = new ResponseEntity&lt;&gt;(error, HttpStatus.NOT_FOUND);</span>
-<span class="fc" id="L82">		}</span>
-<span class="fc" id="L83">		return responseEntity;</span>
+<span class="fc" id="L82">			responseEntity = new ResponseEntity&lt;&gt;(userServices.getUserByIdentificationAndRole(identification, role), HttpStatus.OK);</span>
+<span class="fc" id="L83">		} catch (UserServiceException e) {</span>
+<span class="fc" id="L84">			Map&lt;String, String&gt; error = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L85">			error.put(key, e.getMessage());</span>
+<span class="fc" id="L86">			responseEntity = new ResponseEntity&lt;&gt;(error, HttpStatus.NOT_FOUND);</span>
+<span class="fc" id="L87">		}</span>
+<span class="fc" id="L88">		return responseEntity;</span>
 	}
 	@GetMapping(&quot;/roles/{role}&quot;)
 	public ResponseEntity&lt;Object&gt; getUserByRole(@PathVariable String role) {
 		ResponseEntity&lt;Object&gt; responseEntity;
 		try {
-<span class="fc" id="L89">			responseEntity = new ResponseEntity&lt;&gt;(userServices.getUserByRole(role), HttpStatus.OK);</span>
-<span class="fc" id="L90">		}catch (UserServiceException e) {</span>
-<span class="fc" id="L91">			Map&lt;String, String&gt; error = new HashMap&lt;&gt;();</span>
-<span class="fc" id="L92">			error.put(key, e.getMessage());</span>
-<span class="fc" id="L93">			responseEntity = new ResponseEntity&lt;&gt;(error, HttpStatus.NOT_FOUND);</span>
-<span class="fc" id="L94">		}</span>
-<span class="fc" id="L95">		return responseEntity;</span>
+<span class="fc" id="L94">			responseEntity = new ResponseEntity&lt;&gt;(userServices.getUserByRole(role), HttpStatus.OK);</span>
+<span class="fc" id="L95">		}catch (UserServiceException e) {</span>
+<span class="fc" id="L96">			Map&lt;String, String&gt; error = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L97">			error.put(key, e.getMessage());</span>
+<span class="fc" id="L98">			responseEntity = new ResponseEntity&lt;&gt;(error, HttpStatus.NOT_FOUND);</span>
+<span class="fc" id="L99">		}</span>
+<span class="fc" id="L100">		return responseEntity;</span>
 	}
 	@PutMapping(&quot;/{id}/project/{idProject}&quot;)
 	public ResponseEntity&lt;Object&gt; addProjectToUser(@PathVariable String id, @PathVariable String idProject) {
 		ResponseEntity&lt;Object&gt; responseEntity;
 		try {
-<span class="fc" id="L101">			Project project = iProjectServices.addInversion(iProjectServices.getProyectById(idProject));	</span>
-<span class="fc" id="L102">			responseEntity = new ResponseEntity&lt;&gt;(userServices.addProject(userServices.getUserById(id), project),HttpStatus.OK);</span>
-<span class="fc" id="L103">		} catch (ProjectServiceException | UserServiceException e) {</span>
-<span class="fc" id="L104">			Map&lt;String, String&gt; error = new HashMap&lt;&gt;();</span>
-<span class="fc" id="L105">			error.put(key, e.getMessage());</span>
-<span class="fc" id="L106">			responseEntity = new ResponseEntity&lt;&gt;(error, HttpStatus.NOT_FOUND);</span>
-<span class="fc" id="L107">		}</span>
+<span class="fc" id="L106">			Project project = iProjectServices.addInversion(iProjectServices.getProyectById(idProject));	</span>
+<span class="fc" id="L107">			responseEntity = new ResponseEntity&lt;&gt;(userServices.addProject(userServices.getUserById(id), project),HttpStatus.OK);</span>
+<span class="fc" id="L108">		} catch (ProjectServiceException | UserServiceException e) {</span>
+<span class="fc" id="L109">			Map&lt;String, String&gt; error = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L110">			error.put(key, e.getMessage());</span>
+<span class="fc" id="L111">			responseEntity = new ResponseEntity&lt;&gt;(error, HttpStatus.NOT_FOUND);</span>
+<span class="fc" id="L112">		}</span>
 		
-<span class="fc" id="L109">		return responseEntity;</span>
+<span class="fc" id="L114">		return responseEntity;</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

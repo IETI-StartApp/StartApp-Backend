@@ -11,8 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(&quot;support/tickets&quot;)
 @CrossOrigin(origins= &quot;*&quot;)
+@RequestMapping(&quot;/support/tickets&quot;)
 public class TicketController {
 
     private ITicketServices ticketServices;
@@ -43,6 +43,10 @@ public class TicketController {
 <span class="fc" id="L43">        User user = userRequest.toUser();</span>
 <span class="fc" id="L44">        return new ResponseEntity&lt;&gt;(ticketServices.getTicketBySender(user),HttpStatus.OK);</span>
     }
+
+
+
+
 
 
 }

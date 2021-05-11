@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.059s</div>
+<div class="counter">0.067s</div>
 <p>duration</p>
 </div>
 </td>
@@ -63,6 +63,9 @@
 <li>
 <a href="#tab0">Tests</a>
 </li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
 </ul>
 <div id="tab0" class="tab">
 <h2>Tests</h2>
@@ -76,17 +79,17 @@
 </thead>
 <tr>
 <td class="success">shouldAddProjectToUser()</td>
-<td class="success">0.007s</td>
+<td class="success">0.006s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">shouldGetUserById()</td>
-<td class="success">0.008s</td>
+<td class="success">0.009s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">shouldGetUserByIdentificationAndRole()</td>
-<td class="success">0.008s</td>
+<td class="success">0.006s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -96,12 +99,12 @@
 </tr>
 <tr>
 <td class="success">shouldNotGetUserById()</td>
-<td class="success">0.007s</td>
+<td class="success">0.009s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">shouldNotGetUserByIdentificationAndRole()</td>
-<td class="success">0.007s</td>
+<td class="success">0.010s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -111,10 +114,22 @@
 </tr>
 <tr>
 <td class="success">shouldSaveUser()</td>
-<td class="success">0.007s</td>
+<td class="success">0.012s</td>
 <td class="success">passed</td>
 </tr>
 </table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>2021-05-10 21:00:52.139  INFO 12844 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [edu.escuelaing.ieti.startapp.business.UserServiceTests], using SpringBootContextLoader
+2021-05-10 21:00:52.141  INFO 12844 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [edu.escuelaing.ieti.startapp.business.UserServiceTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+2021-05-10 21:00:52.142  INFO 12844 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [edu.escuelaing.ieti.startapp.business.UserServiceTests]: UserServiceTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2021-05-10 21:00:52.148  INFO 12844 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration edu.escuelaing.ieti.startapp.StartappApplication for test class edu.escuelaing.ieti.startapp.business.UserServiceTests
+2021-05-10 21:00:52.153  INFO 12844 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2021-05-10 21:00:52.154  INFO 12844 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@4eb4d5b3, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@16844e68, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@5c688d39, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@4cd01ad8, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@24a147bc, org.springframework.test.context.support.DirtiesContextTestExecutionListener@10e2ba4e, org.springframework.test.context.transaction.TransactionalTestExecutionListener@87bec2e, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@44b13123, org.springframework.test.context.event.EventPublishingTestExecutionListener@6a0312ae, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@6fb6f56a, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@387b7e2e, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@750e782b, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@76a9246, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@5faf2a64, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@3c46b5b1]
+</pre>
+</span>
 </div>
 </div>
 <div id="footer">
@@ -124,7 +139,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 6.8.3</a> at 10/05/2021, 8:04:21 p. m.</p>
+<a href="http://www.gradle.org">Gradle 6.8.3</a> at 10/05/2021, 9:00:54 p. m.</p>
 </div>
 </div>
 </body>

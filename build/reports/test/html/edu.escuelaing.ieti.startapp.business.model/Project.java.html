@@ -27,10 +27,10 @@ public class Project implements Serializable {
 <span class="pc" id="L27">    @Getter @Setter </span>
     private List&lt;Comment&gt; comments;
 <span class="pc" id="L29">    @Getter @Setter</span>
-    private String idUser;
+    private User User;
     
 
-<span class="fc" id="L33">    public Project(String name, String image, String video, String country, String description,Finance finance, List&lt;Comment&gt; comments, String idUser) {</span>
+<span class="fc" id="L33">    public Project(String name, String image, String video, String country, String description,Finance finance, List&lt;Comment&gt; comments, User idUser) {</span>
 <span class="fc" id="L34">        this.name = name;</span>
 <span class="fc" id="L35">        this.image = image;</span>
 <span class="fc" id="L36">        this.video = video;</span>
@@ -38,7 +38,7 @@ public class Project implements Serializable {
 <span class="fc" id="L38">        this.description = description;</span>
 <span class="fc" id="L39">        this.finance = finance;</span>
 <span class="fc" id="L40">        this.comments = comments;</span>
-<span class="fc" id="L41">        this.idUser = idUser; </span>
+<span class="fc" id="L41">        this.User = idUser;</span>
 <span class="fc" id="L42">    }</span>
 
 

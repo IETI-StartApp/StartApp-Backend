@@ -226,7 +226,7 @@ class UserControllerTests {
 		users = new ArrayList<User>();
 		List<Project> projects = new ArrayList<Project>();
 		Finance testFinance1 = new Finance(1L, 2, 1L, 2L, new Date(), new Date());
-		testProject1 = new Project("testProject", "abc.com", "abc.com", "CO", "testDesc", testFinance1, comments, "test");
+		testProject1 = new Project("testProject", "abc.com", "abc.com", "CO", "testDesc", testFinance1, comments, new User());
 		testProject1.setId("test");
 		projects.add(testProject1);
 		user1 = new User("test", "test", "test@gmail.com", 1111111111, UserRole.INVESTOR, "This is a test", projects);

@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import edu.escuelaing.ieti.startapp.business.model.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -93,7 +94,7 @@ class ProjectServiceTests {
     	List<Comment> comments = new ArrayList<Comment>();
         Finance testFinance1 = new Finance(200000,3,1L,2L,new Date(),new Date());
         testProject1 = new Project("testProject", "abc.com", "abc.com", "CO",
-                "A valid description for a valid project",testFinance1, comments,"test");
+                "A valid description for a valid project",testFinance1, comments,new User());
         testProject1.setId("Test");
         projects.add(testProject1);
     }

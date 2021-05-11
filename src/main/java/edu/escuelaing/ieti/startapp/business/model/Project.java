@@ -27,10 +27,10 @@ public class Project implements Serializable {
     @Getter @Setter 
     private List<Comment> comments;
     @Getter @Setter
-    private String idUser;
+    private User User;
     
 
-    public Project(String name, String image, String video, String country, String description,Finance finance, List<Comment> comments, String idUser) {
+    public Project(String name, String image, String video, String country, String description,Finance finance, List<Comment> comments, User idUser) {
         this.name = name;
         this.image = image;
         this.video = video;
@@ -38,7 +38,7 @@ public class Project implements Serializable {
         this.description = description;
         this.finance = finance;
         this.comments = comments;
-        this.idUser = idUser; 
+        this.User = idUser;
     }
 
 

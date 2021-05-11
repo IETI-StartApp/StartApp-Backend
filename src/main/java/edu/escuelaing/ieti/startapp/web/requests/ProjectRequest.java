@@ -3,6 +3,8 @@ package edu.escuelaing.ieti.startapp.web.requests;
 import edu.escuelaing.ieti.startapp.business.model.Finance;
 import edu.escuelaing.ieti.startapp.business.model.Project;
 import edu.escuelaing.ieti.startapp.business.model.Comment;
+import edu.escuelaing.ieti.startapp.business.model.User;
+
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -17,7 +19,7 @@ public class ProjectRequest implements Serializable {
     private String name;
     private String image;
     private String video;
-    private String idUser;
+    private User user;
     @NotEmpty(message = "El proyecto debe tener un país")
     private String country;
     @NotEmpty
@@ -36,17 +38,17 @@ public class ProjectRequest implements Serializable {
         this.description = project.getDescription();
         this.video = project.getVideo();
         this.comments = project.getComments();
-        this.idUser = project.getIdUser();
+        this.user = project.getUser();
     }
     public Project toProject (){
-        return new Project(name,image,video,country,description,finance, comments, idUser);
+        return new Project(name,image,video,country,description,finance, comments, user);
     }
 
-    public String getIdUser() {
-		return idUser;
+    public User getIdUser() {
+		return user;
 	}
 	public void setIdUser(String idUser) {
-		this.idUser = idUser;
+		this.user = user;
 	}
 	public void setComments(List<Comment> comments) {
 		this.comments = comments;
@@ -105,4 +107,5 @@ public class ProjectRequest implements Serializable {
     public void setComment(List<Comment> comments ) {
         this.comments = comments;
     }
+
 }
