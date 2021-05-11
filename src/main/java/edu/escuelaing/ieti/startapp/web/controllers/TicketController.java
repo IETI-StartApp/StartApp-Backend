@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/support/tickets")
+@CrossOrigin(origins= "*")
 public class TicketController {
 
     private ITicketServices ticketServices;
