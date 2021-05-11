@@ -25,6 +25,7 @@ public class UserRequest {
 	private UserRole role;
 	private String description;
 	private List<Project> projects;
+	private String image;
 
 	public UserRequest() {
 
@@ -38,10 +39,11 @@ public class UserRequest {
 		this.role = user.getRole();
 		this.description = user.getDescription();
 		this.projects = user.getProjects();
+		this.image = user.getImage();
 	}
 
 	public User toUser() {
-		return new User(firstName, lastName, email, identification, role, description, projects);
+		return new User(firstName, lastName, email, identification, role, description, projects, image);
 	}
 
 	public String getFirstName() {
@@ -99,5 +101,14 @@ public class UserRequest {
 	public void setProjects(List<Project> projects) {
 		this.projects = projects;
 	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+	
 
 }

@@ -133,8 +133,8 @@ class UserServiceTests {
 		testProject1 = new Project("testProject", "abc.com", "abc.com", "CO", "testDesc", testFinance1, comments,new User());
 		testProject1.setId("test");
 		projects.add(testProject1);
-		user1 = new User("test", "test", "test@gmail.com", 1111111111, UserRole.INVESTOR, "This is a test", projects);
-		user2 = new User("test", "test", "test@gmail.com", 1111111112, UserRole.INVESTOR, "This is a test", projects);
+		user1 = new User("test", "test", "test@gmail.com", 1111111111, UserRole.INVESTOR, "This is a test", projects, "test");
+		user2 = new User("test", "test", "test@gmail.com", 1111111112, UserRole.INVESTOR, "This is a test", projects, "test");
 		user2.setFirstName(user2.getFirstName());
 		user2.setLastName(user2.getLastName());
 		user2.setEmail(user2.getEmail());

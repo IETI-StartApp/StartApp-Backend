@@ -1,6 +1,7 @@
 package edu.escuelaing.ieti.startapp.business.model;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.mongodb.core.mapping.Document;
 import javax.validation.constraints.Min;
@@ -8,6 +9,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Document(collection = "finances")
+@NoArgsConstructor
 public class Finance implements Serializable {
 
     private static final long serialVersionUID = 2L;
@@ -34,5 +36,6 @@ public class Finance implements Serializable {
         this.startDate = startDate;
         this.endDate = endDate;
     }
+    
 
 }

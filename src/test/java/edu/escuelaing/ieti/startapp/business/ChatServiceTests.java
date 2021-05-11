@@ -56,7 +56,7 @@ class ChatServiceTests {
 	@Test
 	void shouldFindAllChatsByUser() {
 		try {
-			User userTest = new User("test", "test", "test@gmail.com", 1111111111, UserRole.CONSULTOR, "This is a test", null);
+			User userTest = new User("test", "test", "test@gmail.com", 1111111111, UserRole.CONSULTOR, "This is a test", null, "test");
 			List<Chat> ChatsTest = chatServices.findAllChatsByUser(userTest);
 			Assertions.fail();
 		} catch (UserServiceException | ChatServiceException e) {
@@ -169,10 +169,10 @@ class ChatServiceTests {
 		testProject1 = new Project("testProject", "abc.com", "abc.com", "CO", "testDesc", testFinance1, comments,new User());
 		testProject1.setId("test");
 		projects.add(testProject1);
-		user1 = new User("test", "test", "test@gmail.com", 1111111111, UserRole.INVESTOR, "This is a test", projects);
+		user1 = new User("test", "test", "test@gmail.com", 1111111111, UserRole.INVESTOR, "This is a test", projects, "test");
 		user2 = new User("test", "test", "test@gmail.com", 1111111112, UserRole.ENTREPRENEUR, "This is a test",
-				projects);
-		userBad = new User("test", "test", "test", -1111111112, UserRole.INVESTOR, "This is a test", projects);
+				projects, "test");
+		userBad = new User("test", "test", "test", -1111111112, UserRole.INVESTOR, "This is a test", projects, "test");
 		user1.setId("test");
 		users.add(user1);
 		users.add(user2);

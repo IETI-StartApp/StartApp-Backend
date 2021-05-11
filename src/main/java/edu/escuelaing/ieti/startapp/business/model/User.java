@@ -32,9 +32,11 @@ public class User implements Serializable {
 	private String description;
 	@Getter @Setter
 	private List<Project> projects;
+	@Getter @Setter
+	private String image;
 
 	public User(String firstName, String lastName, String email, long identification, UserRole role, String description,
-			List<Project> projects) {
+			List<Project> projects, String image) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
@@ -42,6 +44,7 @@ public class User implements Serializable {
 		this.role = role;
 		this.description = description;
 		this.projects = projects;
+		this.image = image; 
 	}
 
 }
