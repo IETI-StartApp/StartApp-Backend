@@ -10,4 +10,5 @@ import edu.escuelaing.ieti.startapp.business.model.User;
 public interface UserRepository extends MongoRepository<User, String>{
 	public Optional<User> findByIdentificationAndRole(long identification, String role);
 	public Optional<List<User>> findByRole(String role);
+
 }
