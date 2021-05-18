@@ -9,13 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import edu.escuelaing.ieti.startapp.business.exception.ProjectServiceException;
 import edu.escuelaing.ieti.startapp.business.exception.UserServiceException;
@@ -27,6 +21,7 @@ import edu.escuelaing.ieti.startapp.web.handlers.ErrorHandler;
 import edu.escuelaing.ieti.startapp.web.requests.UserRequest;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping(value = "api/v1/users")
 public class UserController {
 	private final ErrorHandler errorHandler;
@@ -67,6 +62,18 @@ public class UserController {
 		ResponseEntity<Object> responseEntity;
 		try {
 			responseEntity = new ResponseEntity<>(userServices.getUserById(id), HttpStatus.OK);
+		} catch (UserServiceException e) {
+			Map<String, String> error = new HashMap<>();
+			error.put(key, e.getMessage());
+			responseEntity = new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+		}
+		return responseEntity;
+	}
+	@GetMapping("/search/{email}")
+	public ResponseEntity<Object> getUserByEmail(@Valid @PathVariable String email) {
+		ResponseEntity<Object> responseEntity;
+		try {
+			responseEntity = new ResponseEntity<>(userServices.getUserByEmail(email), HttpStatus.OK);
 		} catch (UserServiceException e) {
 			Map<String, String> error = new HashMap<>();
 			error.put(key, e.getMessage());
