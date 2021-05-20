@@ -23,7 +23,7 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">11</div>
+<div class="counter">13</div>
 <p>tests</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.112s</div>
+<div class="counter">1.312s</div>
 <p>duration</p>
 </div>
 </td>
@@ -79,57 +79,67 @@
 </thead>
 <tr>
 <td class="success">shoulNotdAddProjectToUser()</td>
-<td class="success">0.011s</td>
+<td class="success">0.035s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">shouldAddProjectToUser()</td>
-<td class="success">0.011s</td>
+<td class="success">0.049s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">shouldCreateUser()</td>
-<td class="success">0.013s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">shouldGetUserById()</td>
-<td class="success">0.007s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">shouldGetUserByIdentificationAndRole()</td>
-<td class="success">0.013s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">shouldGetUserByRole()</td>
-<td class="success">0.008s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">shouldNotCreateUser()</td>
 <td class="success">0.011s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
+<td class="success">shouldGetUserByEmail()</td>
+<td class="success">0.174s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">shouldGetUserById()</td>
+<td class="success">0.575s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">shouldGetUserByIdentificationAndRole()</td>
+<td class="success">0.071s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">shouldGetUserByRole()</td>
+<td class="success">0.054s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">shouldNotCreateUser()</td>
+<td class="success">0.139s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
 <td class="success">shouldNotCreateUserRepeated()</td>
-<td class="success">0.012s</td>
+<td class="success">0.120s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">shouldNotGetUserByEmail()</td>
+<td class="success">0.017s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">shouldNotGetUserById()</td>
-<td class="success">0.008s</td>
+<td class="success">0.032s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">shouldNotGetUserByIdentificationAndRole()</td>
-<td class="success">0.009s</td>
+<td class="success">0.016s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">shouldNotGetUserByRole()</td>
-<td class="success">0.009s</td>
+<td class="success">0.019s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -137,12 +147,87 @@
 <div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>2021-05-10 21:00:52.812  INFO 12844 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [edu.escuelaing.ieti.startapp.web.UserControllerTests], using SpringBootContextLoader
-2021-05-10 21:00:52.814  INFO 12844 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [edu.escuelaing.ieti.startapp.web.UserControllerTests]: no resource found for suffixes {-context.xml, Context.groovy}.
-2021-05-10 21:00:52.815  INFO 12844 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [edu.escuelaing.ieti.startapp.web.UserControllerTests]: UserControllerTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2021-05-10 21:00:52.821  INFO 12844 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration edu.escuelaing.ieti.startapp.StartappApplication for test class edu.escuelaing.ieti.startapp.web.UserControllerTests
-2021-05-10 21:00:52.823  INFO 12844 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
-2021-05-10 21:00:52.824  INFO 12844 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@71ae1799, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@7659e5d6, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@7c8ad4b9, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@406ce6b7, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@417f33fc, org.springframework.test.context.support.DirtiesContextTestExecutionListener@78b10950, org.springframework.test.context.transaction.TransactionalTestExecutionListener@523435e3, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@75ca284c, org.springframework.test.context.event.EventPublishingTestExecutionListener@4d1215da, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@3d196ea1, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@4ef1cfcc, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@6a5d1616, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@373c7242, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@41267e62, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@1e95625]
+<pre>22:40:56.618 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+22:40:56.790 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+22:40:57.893 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [edu.escuelaing.ieti.startapp.web.UserControllerTests] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+22:40:57.961 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [edu.escuelaing.ieti.startapp.web.UserControllerTests], using SpringBootContextLoader
+22:40:57.985 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [edu.escuelaing.ieti.startapp.web.UserControllerTests]: class path resource [edu/escuelaing/ieti/startapp/web/UserControllerTests-context.xml] does not exist
+22:40:57.986 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [edu.escuelaing.ieti.startapp.web.UserControllerTests]: class path resource [edu/escuelaing/ieti/startapp/web/UserControllerTestsContext.groovy] does not exist
+22:40:57.989 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [edu.escuelaing.ieti.startapp.web.UserControllerTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+22:40:57.992 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [edu.escuelaing.ieti.startapp.web.UserControllerTests]: UserControllerTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+22:40:58.365 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [edu.escuelaing.ieti.startapp.web.UserControllerTests]
+22:40:59.094 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [D:\Windows\Videos\StartApp-Backend\build\classes\java\main\edu\escuelaing\ieti\startapp\StartappApplication.class]
+22:40:59.100 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration edu.escuelaing.ieti.startapp.StartappApplication for test class edu.escuelaing.ieti.startapp.web.UserControllerTests
+22:40:59.981 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [edu.escuelaing.ieti.startapp.web.UserControllerTests]: using defaults.
+22:40:59.985 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+22:41:00.346 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@555da33, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@71af2fb, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@287b9633, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@1d34a503, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@369b70d4, org.springframework.test.context.support.DirtiesContextTestExecutionListener@66c6c1d6, org.springframework.test.context.transaction.TransactionalTestExecutionListener@12780933, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@2a5caac2, org.springframework.test.context.event.EventPublishingTestExecutionListener@472c628d, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@17b4d3cf, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@4557719b, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@a92d949, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@2e8eea9c, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@1f156e29, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@61b00ff9]
+22:41:00.410 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@5bdadcfe testClass = UserControllerTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@541ce0cf testClass = UserControllerTests, locations = '{}', classes = '{class edu.escuelaing.ieti.startapp.StartappApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@5f210c2c, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@4b3fa0b3, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@75fa2398, [ImportsContextCustomizer@7c5cbff6 key = [org.springframework.boot.test.autoconfigure.web.servlet.MockMvcAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcWebClientAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcWebDriverAutoConfiguration, org.springframework.boot.autoconfigure.security.oauth2.client.servlet.OAuth2ClientAutoConfiguration, org.springframework.boot.autoconfigure.security.oauth2.resource.servlet.OAuth2ResourceServerAutoConfiguration, org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration, org.springframework.boot.autoconfigure.security.servlet.SecurityFilterAutoConfiguration, org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcSecurityConfiguration]], org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@7239a1dc, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@66503977, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@7c2a63b6, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@7cb04067], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true]], class annotated with @DirtiesContext [false] with mode [null].
+22:41:03.723 [Test worker] DEBUG org.springframework.test.context.support.TestPropertySourceUtils - Adding inlined properties to environment: {spring.jmx.enabled=false, org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.4.4)
+
+2021-05-19 22:41:05.256  INFO 13600 --- [    Test worker] e.e.i.startapp.web.UserControllerTests   : Starting UserControllerTests using Java 11.0.10 on DESKTOP-MRU37V4 with PID 13600 (started by Costalito in D:\Windows\Videos\StartApp-Backend)
+2021-05-19 22:41:05.310  INFO 13600 --- [    Test worker] e.e.i.startapp.web.UserControllerTests   : No active profile set, falling back to default profiles: default
+2021-05-19 22:41:09.538  INFO 13600 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2021-05-19 22:41:10.008  INFO 13600 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 442 ms. Found 5 MongoDB repository interfaces.
+2021-05-19 22:41:15.015  WARN 13600 --- [    Test worker] c.a.a.p.i.BasicProfileConfigLoader       : Your profile name includes a 'profile ' prefix. This is considered part of the profile name in the Java SDK, so you will need to include this prefix in your profile name when you reference this profile from your Java code.
+2021-05-19 22:41:15.018  WARN 13600 --- [    Test worker] c.a.a.p.i.BasicProfileConfigLoader       : Your profile name includes a 'profile ' prefix. This is considered part of the profile name in the Java SDK, so you will need to include this prefix in your profile name when you reference this profile from your Java code.
+2021-05-19 22:41:15.021  WARN 13600 --- [    Test worker] c.a.a.p.i.BasicProfileConfigLoader       : Your profile name includes a 'profile ' prefix. This is considered part of the profile name in the Java SDK, so you will need to include this prefix in your profile name when you reference this profile from your Java code.
+2021-05-19 22:41:15.803  WARN 13600 --- [    Test worker] c.a.a.p.i.BasicProfileConfigLoader       : Your profile name includes a 'profile ' prefix. This is considered part of the profile name in the Java SDK, so you will need to include this prefix in your profile name when you reference this profile from your Java code.
+2021-05-19 22:41:15.803  WARN 13600 --- [    Test worker] c.a.a.p.i.BasicProfileConfigLoader       : Your profile name includes a 'profile ' prefix. This is considered part of the profile name in the Java SDK, so you will need to include this prefix in your profile name when you reference this profile from your Java code.
+2021-05-19 22:41:15.805  WARN 13600 --- [    Test worker] c.a.a.p.i.BasicProfileConfigLoader       : Your profile name includes a 'profile ' prefix. This is considered part of the profile name in the Java SDK, so you will need to include this prefix in your profile name when you reference this profile from your Java code.
+2021-05-19 22:41:16.887  WARN 13600 --- [    Test worker] c.a.a.p.i.BasicProfileConfigLoader       : Your profile name includes a 'profile ' prefix. This is considered part of the profile name in the Java SDK, so you will need to include this prefix in your profile name when you reference this profile from your Java code.
+2021-05-19 22:41:16.888  WARN 13600 --- [    Test worker] c.a.a.p.i.BasicProfileConfigLoader       : Your profile name includes a 'profile ' prefix. This is considered part of the profile name in the Java SDK, so you will need to include this prefix in your profile name when you reference this profile from your Java code.
+2021-05-19 22:41:16.888  WARN 13600 --- [    Test worker] c.a.a.p.i.BasicProfileConfigLoader       : Your profile name includes a 'profile ' prefix. This is considered part of the profile name in the Java SDK, so you will need to include this prefix in your profile name when you reference this profile from your Java code.
+2021-05-19 22:41:17.210  WARN 13600 --- [    Test worker] c.a.a.p.i.BasicProfileConfigLoader       : Your profile name includes a 'profile ' prefix. This is considered part of the profile name in the Java SDK, so you will need to include this prefix in your profile name when you reference this profile from your Java code.
+2021-05-19 22:41:17.210  WARN 13600 --- [    Test worker] c.a.a.p.i.BasicProfileConfigLoader       : Your profile name includes a 'profile ' prefix. This is considered part of the profile name in the Java SDK, so you will need to include this prefix in your profile name when you reference this profile from your Java code.
+2021-05-19 22:41:17.211  WARN 13600 --- [    Test worker] c.a.a.p.i.BasicProfileConfigLoader       : Your profile name includes a 'profile ' prefix. This is considered part of the profile name in the Java SDK, so you will need to include this prefix in your profile name when you reference this profile from your Java code.
+2021-05-19 22:41:28.979  INFO 13600 --- [       Thread-6] o.s.b.a.mongo.embedded.EmbeddedMongo     : note: noprealloc may hurt performance in many applications
+2021-05-19 22:41:29.224  INFO 13600 --- [       Thread-6] o.s.b.a.mongo.embedded.EmbeddedMongo     : 2021-05-19T22:41:29.224-0500 I CONTROL  [initandlisten] MongoDB starting : pid=8588 port=58736 dbpath=C:\Users\COSTAL~1\AppData\Local\Temp\embedmongo-db-5a645682-2cb1-4696-9868-afe465423df3 64-bit host=DESKTOP-MRU37V4
+2021-05-19 22:41:29.225  INFO 13600 --- [       Thread-6] o.s.b.a.mongo.embedded.EmbeddedMongo     : 2021-05-19T22:41:29.225-0500 I CONTROL  [initandlisten] targetMinOS: Windows Vista/Windows Server 2008
+2021-05-19 22:41:29.225  INFO 13600 --- [       Thread-6] o.s.b.a.mongo.embedded.EmbeddedMongo     : 2021-05-19T22:41:29.225-0500 I CONTROL  [initandlisten] db version v3.5.5
+2021-05-19 22:41:29.226  INFO 13600 --- [       Thread-6] o.s.b.a.mongo.embedded.EmbeddedMongo     : 2021-05-19T22:41:29.225-0500 I CONTROL  [initandlisten] git version: 98515c812b6fa893613f063dae568ff8319cbfbd
+2021-05-19 22:41:29.226  INFO 13600 --- [       Thread-6] o.s.b.a.mongo.embedded.EmbeddedMongo     : 2021-05-19T22:41:29.225-0500 I CONTROL  [initandlisten] allocator: tcmalloc
+2021-05-19 22:41:29.227  INFO 13600 --- [       Thread-6] o.s.b.a.mongo.embedded.EmbeddedMongo     : 2021-05-19T22:41:29.225-0500 I CONTROL  [initandlisten] modules: none
+2021-05-19 22:41:29.227  INFO 13600 --- [       Thread-6] o.s.b.a.mongo.embedded.EmbeddedMongo     : 2021-05-19T22:41:29.225-0500 I CONTROL  [initandlisten] build environment:
+2021-05-19 22:41:29.228  INFO 13600 --- [       Thread-6] o.s.b.a.mongo.embedded.EmbeddedMongo     : 2021-05-19T22:41:29.225-0500 I CONTROL  [initandlisten]     distarch: x86_64
+2021-05-19 22:41:29.228  INFO 13600 --- [       Thread-6] o.s.b.a.mongo.embedded.EmbeddedMongo     : 2021-05-19T22:41:29.225-0500 I CONTROL  [initandlisten]     target_arch: x86_64
+2021-05-19 22:41:29.229  INFO 13600 --- [       Thread-6] o.s.b.a.mongo.embedded.EmbeddedMongo     : 2021-05-19T22:41:29.225-0500 I CONTROL  [initandlisten] options: { net: { bindIp: &quot;127.0.0.1&quot;, http: { enabled: false }, port: 58736 }, security: { authorization: &quot;disabled&quot; }, storage: { dbPath: &quot;C:\Users\COSTAL~1\AppData\Local\Temp\embedmongo-db-5a645682-2cb1-4696-9868-afe465423df3&quot;, journal: { enabled: false }, mmapv1: { preallocDataFiles: false, smallFiles: true }, syncPeriodSecs: 0.0 } }
+2021-05-19 22:41:29.230  INFO 13600 --- [       Thread-6] o.s.b.a.mongo.embedded.EmbeddedMongo     : 2021-05-19T22:41:29.231-0500 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=3525M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=0,log_size=2GB),statistics_log=(wait=0),verbose=(recovery_progress),,log=(enabled=false),
+2021-05-19 22:41:29.466  INFO 13600 --- [       Thread-6] o.s.b.a.mongo.embedded.EmbeddedMongo     : 2021-05-19T22:41:29.466-0500 W STORAGE  [initandlisten] Detected configuration for non-active storage engine mmapv1 when current storage engine is wiredTiger
+2021-05-19 22:41:29.473  INFO 13600 --- [       Thread-6] o.s.b.a.mongo.embedded.EmbeddedMongo     : 2021-05-19T22:41:29.473-0500 I CONTROL  [initandlisten] 
+2021-05-19 22:41:29.481  INFO 13600 --- [       Thread-6] o.s.b.a.mongo.embedded.EmbeddedMongo     : 2021-05-19T22:41:29.481-0500 I CONTROL  [initandlisten] ** NOTE: This is a development version (3.5.5) of MongoDB.
+2021-05-19 22:41:29.481  INFO 13600 --- [       Thread-6] o.s.b.a.mongo.embedded.EmbeddedMongo     : 2021-05-19T22:41:29.481-0500 I CONTROL  [initandlisten] **       Not recommended for production.
+2021-05-19 22:41:29.482  INFO 13600 --- [       Thread-6] o.s.b.a.mongo.embedded.EmbeddedMongo     : 2021-05-19T22:41:29.481-0500 I CONTROL  [initandlisten] 
+2021-05-19 22:41:36.177  INFO 13600 --- [       Thread-6] o.s.b.a.mongo.embedded.EmbeddedMongo     : 2021-05-19T22:41:36.178-0500 W FTDC     [initandlisten] Failed to initialize Performance Counters for FTDC: WindowsPdhError: PdhExpandCounterPathW failed with 'El objeto especificado no se encontrÃ³ en el equipo.' for counter '\Memory\Available Bytes'
+2021-05-19 22:41:36.178  INFO 13600 --- [       Thread-6] o.s.b.a.mongo.embedded.EmbeddedMongo     : 2021-05-19T22:41:36.178-0500 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory 'C:/Users/COSTAL~1/AppData/Local/Temp/embedmongo-db-5a645682-2cb1-4696-9868-afe465423df3/diagnostic.data'
+2021-05-19 22:41:36.261  INFO 13600 --- [       Thread-6] o.s.b.a.mongo.embedded.EmbeddedMongo     : 2021-05-19T22:41:36.261-0500 I INDEX    [initandlisten] build index on: admin.system.version properties: { v: 2, key: { version: 1 }, name: &quot;incompatible_with_version_32&quot;, ns: &quot;admin.system.version&quot; }
+2021-05-19 22:41:36.264  INFO 13600 --- [       Thread-6] o.s.b.a.mongo.embedded.EmbeddedMongo     : 2021-05-19T22:41:36.264-0500 I INDEX    [initandlisten] 	 building index using bulk method; build may temporarily use up to 500 megabytes of RAM
+2021-05-19 22:41:36.295  INFO 13600 --- [       Thread-6] o.s.b.a.mongo.embedded.EmbeddedMongo     : 2021-05-19T22:41:36.295-0500 I INDEX    [initandlisten] build index done.  scanned 0 total records. 0 secs
+2021-05-19 22:41:36.305  INFO 13600 --- [       Thread-6] o.s.b.a.mongo.embedded.EmbeddedMongo     : 2021-05-19T22:41:36.305-0500 I COMMAND  [initandlisten] setting featureCompatibilityVersion to 3.4
+2021-05-19 22:41:36.309  INFO 13600 --- [       Thread-6] o.s.b.a.mongo.embedded.EmbeddedMongo     : 2021-05-19T22:41:36.309-0500 I NETWORK  [thread1] waiting for connections on port 58736
+2021-05-19 22:41:36.310  INFO 13600 --- [    Test worker] d.f.embed.mongo.MongodExecutable         : start de.flapdoodle.embed.mongo.config.MongodConfigBuilder$ImmutableMongodConfig@7c5f29dd
+2021-05-19 22:41:36.764  INFO 13600 --- [    Test worker] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[localhost:58736], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms'}
+2021-05-19 22:41:37.028  INFO 13600 --- [       Thread-6] o.s.b.a.mongo.embedded.EmbeddedMongo     : 2021-05-19T22:41:37.028-0500 I NETWORK  [thread1] connection accepted from 127.0.0.1:58737 #1 (1 connection now open)
+2021-05-19 22:41:37.135  INFO 13600 --- [       Thread-6] o.s.b.a.mongo.embedded.EmbeddedMongo     : 2021-05-19T22:41:37.135-0500 I NETWORK  [thread1] connection accepted from 127.0.0.1:58738 #2 (2 connections now open)
+2021-05-19 22:41:37.136  INFO 13600 --- [       Thread-6] o.s.b.a.mongo.embedded.EmbeddedMongo     : 2021-05-19T22:41:37.136-0500 I NETWORK  [conn1] received client metadata from 127.0.0.1:58737 conn1: { driver: { name: &quot;mongo-java-driver|sync|spring-boot&quot;, version: &quot;4.1.2&quot; }, os: { type: &quot;Windows&quot;, name: &quot;Windows 10&quot;, architecture: &quot;amd64&quot;, version: &quot;10.0&quot; }, platform: &quot;Java/Amazon.com Inc./11.0.10+9-LTS&quot; }
+2021-05-19 22:41:37.194  INFO 13600 --- [       Thread-6] o.s.b.a.mongo.embedded.EmbeddedMongo     : 2021-05-19T22:41:37.181-0500 I NETWORK  [conn2] received client metadata from 127.0.0.1:58738 conn2: { driver: { name: &quot;mongo-java-driver|sync|spring-boot&quot;, version: &quot;4.1.2&quot; }, os: { type: &quot;Windows&quot;, name: &quot;Windows 10&quot;, architecture: &quot;amd64&quot;, version: &quot;10.0&quot; }, platform: &quot;Java/Amazon.com Inc./11.0.10+9-LTS&quot; }
+2021-05-19 22:41:37.256  INFO 13600 --- [localhost:58736] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:2}] to localhost:58736
+2021-05-19 22:41:37.266  INFO 13600 --- [localhost:58736] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:2, serverValue:1}] to localhost:58736
+2021-05-19 22:41:37.269  INFO 13600 --- [localhost:58736] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:58736, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=5, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=null, roundTripTimeNanos=205183600}
+2021-05-19 22:41:38.112  WARN 13600 --- [    Test worker] o.s.data.convert.CustomConversions       : Registering converter from class java.time.LocalDateTime to class org.joda.time.LocalDateTime as reading converter although it doesn't convert from a store-supported type! You might want to check your annotation setup at the converter implementation.
+2021-05-19 22:41:38.934  WARN 13600 --- [    Test worker] o.s.data.convert.CustomConversions       : Registering converter from class java.time.LocalDateTime to class org.joda.time.LocalDateTime as reading converter although it doesn't convert from a store-supported type! You might want to check your annotation setup at the converter implementation.
+2021-05-19 22:41:42.716  INFO 13600 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-05-19 22:41:45.763  INFO 13600 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2021-05-19 22:41:45.763  INFO 13600 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2021-05-19 22:41:45.766  INFO 13600 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2021-05-19 22:41:45.990  INFO 13600 --- [    Test worker] e.e.i.startapp.web.UserControllerTests   : Started UserControllerTests in 42.223 seconds (JVM running for 54.727)
 </pre>
 </span>
 </div>
@@ -154,7 +239,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 6.8.3</a> at 10/05/2021, 9:00:54 p. m.</p>
+<a href="http://www.gradle.org">Gradle 6.8.3</a> at 19 may. 2021 22:41:49</p>
 </div>
 </div>
 </body>

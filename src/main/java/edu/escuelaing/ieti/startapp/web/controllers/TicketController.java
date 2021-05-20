@@ -11,11 +11,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin(origins= "*")
-@RequestMapping("/support/tickets")
+@RequestMapping("api/v1/support/tickets")
 public class TicketController {
 
-    private ITicketServices ticketServices;
+    private final ITicketServices ticketServices;
     @Autowired
     public TicketController(ITicketServices ticketServices) {
         this.ticketServices = ticketServices;
@@ -32,21 +31,17 @@ public class TicketController {
         return new ResponseEntity<>(ticketServices.getTickets(),HttpStatus.OK);
     }
 
-    @GetMapping("/Receptor")
+    @GetMapping("/receptor")
     public ResponseEntity<Object> getTicketByReceptor(@RequestBody UserRequest userRequest){
         User user = userRequest.toUser();
         return new ResponseEntity<>(ticketServices.getTicketByReceptor(user),HttpStatus.OK);
     }
 
-    @GetMapping("/Sender")
-    public ResponseEntity<Object> getTicketBySender(@RequestBody UserRequest userRequest){
+    @GetMapping("/sender")
+    public ResponseEntity<Object> getTicketBySender(@RequestBody UserRequest userRequest) {
         User user = userRequest.toUser();
-        return new ResponseEntity<>(ticketServices.getTicketBySender(user),HttpStatus.OK);
+        return new ResponseEntity<>(ticketServices.getTicketBySender(user), HttpStatus.OK);
     }
-
-
-
-
 
 
 }

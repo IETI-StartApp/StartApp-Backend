@@ -13,7 +13,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@CrossOrigin(origins= "*")
 @RequestMapping(value = "api/v1/files")
 public class UploadFileController {
     private final IFileService fileService;

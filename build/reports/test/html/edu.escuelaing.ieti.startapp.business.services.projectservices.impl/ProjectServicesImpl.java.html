@@ -22,27 +22,27 @@ public class ProjectServicesImpl implements IProjectServices {
 
     @Override
     public Project createProject(Project project) {
-<span class="fc" id="L25">        projectRepository.save(project);</span>
-<span class="fc" id="L26">        return project;</span>
+<span class="nc" id="L25">        projectRepository.save(project);</span>
+<span class="nc" id="L26">        return project;</span>
     }
 	@Override
     public List&lt;Project&gt; getAllProjects(){
-<span class="fc" id="L30">    	return projectRepository.findAll();</span>
+<span class="nc" id="L30">    	return projectRepository.findAll();</span>
     }
 	@Override
 	public Project getProyectById(String id) throws ProjectServiceException {
-<span class="fc" id="L34">		return projectRepository.findById(id)</span>
-<span class="fc" id="L35">				.orElseThrow(() -&gt;</span>
-<span class="fc" id="L36">				new ProjectServiceException(ProjectServiceException.PROJECT_NOT_FOUND_EXCEPTION));</span>
+<span class="nc" id="L34">		return projectRepository.findById(id)</span>
+<span class="nc" id="L35">				.orElseThrow(() -&gt;</span>
+<span class="nc" id="L36">				new ProjectServiceException(ProjectServiceException.PROJECT_NOT_FOUND_EXCEPTION));</span>
 	}
 	
 	@Override
 	public Project addInversion(Project project) {
-<span class="fc" id="L41">		Finance finance = project.getFinance();</span>
-<span class="fc" id="L42">		finance.setInvestorNumber(finance.getInvestorNumber()+1);</span>
-<span class="fc" id="L43">		project.setFinance(finance);</span>
-<span class="fc" id="L44">		projectRepository.save(project);</span>
-<span class="fc" id="L45">		return project;</span>
+<span class="nc" id="L41">		Finance finance = project.getFinance();</span>
+<span class="nc" id="L42">		finance.setInvestorNumber(finance.getInvestorNumber()+1);</span>
+<span class="nc" id="L43">		project.setFinance(finance);</span>
+<span class="nc" id="L44">		projectRepository.save(project);</span>
+<span class="nc" id="L45">		return project;</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

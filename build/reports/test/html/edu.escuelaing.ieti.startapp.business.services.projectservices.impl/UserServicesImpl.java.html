@@ -25,39 +25,44 @@ public class UserServicesImpl implements UserServices {
 	@Override
 	public User createUser(User user) throws UserServiceException {
 		try {
-<span class="fc" id="L28">			userRepository.save(user);</span>
+<span class="nc" id="L28">			userRepository.save(user);</span>
 <span class="nc" id="L29">		} catch (DuplicateKeyException e) {</span>
 <span class="nc" id="L30">			throw new UserServiceException(UserServiceException.USER_REPEATED_EXCEPTION);</span>
-<span class="fc" id="L31">		}</span>
+<span class="nc" id="L31">		}</span>
 
-<span class="fc" id="L33">		return user;</span>
+<span class="nc" id="L33">		return user;</span>
 	}
 
 	@Override
 	public User getUserById(String id) throws UserServiceException {
-<span class="fc" id="L38">		return userRepository.findById(id)</span>
-<span class="fc" id="L39">				.orElseThrow(() -&gt; new UserServiceException(UserServiceException.USER_NOT_FOUND_EXCEPTION));</span>
+<span class="nc" id="L38">		return userRepository.findById(id)</span>
+<span class="nc" id="L39">				.orElseThrow(() -&gt; new UserServiceException(UserServiceException.USER_NOT_FOUND_EXCEPTION));</span>
 	}
 
 	@Override
 	public User getUserByIdentificationAndRole(long identification, String role) throws UserServiceException {
-<span class="fc" id="L44">		return userRepository.findByIdentificationAndRole(identification, role)</span>
-<span class="fc" id="L45">				.orElseThrow(() -&gt; new UserServiceException(UserServiceException.USER_NOT_FOUND_EXCEPTION));</span>
+<span class="nc" id="L44">		return userRepository.findByIdentificationAndRole(identification, role)</span>
+<span class="nc" id="L45">				.orElseThrow(() -&gt; new UserServiceException(UserServiceException.USER_NOT_FOUND_EXCEPTION));</span>
 	}
 
 	@Override
 	public List&lt;User&gt; getUserByRole(String role) throws UserServiceException {
-<span class="fc" id="L50">		return userRepository.findByRole(role)</span>
-<span class="fc" id="L51">				.orElseThrow(() -&gt; new UserServiceException(UserServiceException.USER_ROLE_NOT_FOUND_EXCEPTION));</span>
+<span class="nc" id="L50">		return userRepository.findByRole(role)</span>
+<span class="nc" id="L51">				.orElseThrow(() -&gt; new UserServiceException(UserServiceException.USER_ROLE_NOT_FOUND_EXCEPTION));</span>
 	}
 
 	@Override
 	public User addProject(User user, Project project) {
-<span class="fc" id="L56">		List&lt;Project&gt; projects = user.getProjects();</span>
-<span class="fc" id="L57">		projects.add(project);</span>
-<span class="fc" id="L58">		user.setProjects(projects);</span>
-<span class="fc" id="L59">		userRepository.save(user);</span>
-<span class="fc" id="L60">		return user;</span>
+<span class="nc" id="L56">		List&lt;Project&gt; projects = user.getProjects();</span>
+<span class="nc" id="L57">		projects.add(project);</span>
+<span class="nc" id="L58">		user.setProjects(projects);</span>
+<span class="nc" id="L59">		userRepository.save(user);</span>
+<span class="nc" id="L60">		return user;</span>
+	}
+	@Override
+	public User getUserByEmail(String email) throws UserServiceException {
+<span class="nc" id="L64">		return userRepository.findByEmail(email)</span>
+<span class="nc" id="L65">				.orElseThrow(() -&gt; new UserServiceException(UserServiceException.USER_NOT_FOUND_EXCEPTION));</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

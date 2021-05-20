@@ -22,24 +22,24 @@ public class TicketServicesImpl implements ITicketServices {
 
     @Override
     public List&lt;Ticket&gt; getTickets() {
-<span class="fc" id="L25">        return ticketRepository.findAll();</span>
+<span class="nc" id="L25">        return ticketRepository.findAll();</span>
     }
 
     @Override
     public Ticket saveTicket(Ticket ticket) {
-<span class="fc" id="L30">        ticketRepository.save(ticket);</span>
-<span class="fc" id="L31">        return ticket;</span>
+<span class="nc" id="L30">        ticketRepository.save(ticket);</span>
+<span class="nc" id="L31">        return ticket;</span>
     }
 
     @Override
     public List&lt;Ticket&gt; getTicketBySender(User sender) {
 
-<span class="fc" id="L37">        return ticketRepository.findBySender(sender).orElse(new ArrayList&lt;&gt;());</span>
+<span class="nc" id="L37">        return ticketRepository.findBySender(sender).orElse(new ArrayList&lt;&gt;());</span>
     }
 
     @Override
     public List&lt;Ticket&gt; getTicketByReceptor(User receptor) {
-<span class="fc" id="L42">        return ticketRepository.findByReceptor(receptor).orElse(new ArrayList&lt;&gt;());</span>
+<span class="nc" id="L42">        return ticketRepository.findByReceptor(receptor).orElse(new ArrayList&lt;&gt;());</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

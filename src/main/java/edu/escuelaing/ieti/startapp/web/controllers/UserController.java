@@ -21,7 +21,6 @@ import edu.escuelaing.ieti.startapp.web.handlers.ErrorHandler;
 import edu.escuelaing.ieti.startapp.web.requests.UserRequest;
 
 @RestController
-@CrossOrigin("*")
 @RequestMapping(value = "api/v1/users")
 public class UserController {
 	private final ErrorHandler errorHandler;

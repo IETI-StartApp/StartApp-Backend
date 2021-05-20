@@ -27,52 +27,52 @@ public class ChatServicesImpl implements ChatServices {
 
 	@Override
 	public Chat createChat(Chat chat) {
-<span class="fc" id="L30">		chatRepository.save(chat);</span>
-<span class="fc" id="L31">		return chat;</span>
+<span class="nc" id="L30">		chatRepository.save(chat);</span>
+<span class="nc" id="L31">		return chat;</span>
 	}
 
 
 	@Override
 	public List&lt;Chat&gt; findAllChatsByUser(User user) throws UserServiceException, ChatServiceException {
 		List&lt;Chat&gt; chats;
-<span class="fc bfc" id="L38" title="All 3 branches covered.">		switch (user.getRole()) {</span>
+<span class="nc bnc" id="L38" title="All 3 branches missed.">		switch (user.getRole()) {</span>
 		case INVESTOR:
 		case INVESTORPREMIUM:
-<span class="fc" id="L41">			chats = chatRepository.findByInvestor(user)</span>
-<span class="fc" id="L42">			.orElseThrow(() -&gt; new UserServiceException(UserServiceException.ROLE_INCORRECT_EXCEPTION));</span>
-<span class="fc" id="L43">			break;</span>
+<span class="nc" id="L41">			chats = chatRepository.findByInvestor(user)</span>
+<span class="nc" id="L42">			.orElseThrow(() -&gt; new UserServiceException(UserServiceException.ROLE_INCORRECT_EXCEPTION));</span>
+<span class="nc" id="L43">			break;</span>
 		case ENTREPRENEUR:
 		case ENTREPRENEURPREMIUM:
-<span class="fc" id="L46">			chats = chatRepository.findByEntrepreneur(user)</span>
-<span class="fc" id="L47">			.orElseThrow(() -&gt; new UserServiceException(UserServiceException.ROLE_INCORRECT_EXCEPTION));</span>
-<span class="fc" id="L48">			break;</span>
+<span class="nc" id="L46">			chats = chatRepository.findByEntrepreneur(user)</span>
+<span class="nc" id="L47">			.orElseThrow(() -&gt; new UserServiceException(UserServiceException.ROLE_INCORRECT_EXCEPTION));</span>
+<span class="nc" id="L48">			break;</span>
 		default:
-<span class="fc" id="L50">			throw new ChatServiceException(ChatServiceException.CHAT_ROL_NOT_FOUND);</span>
+<span class="nc" id="L50">			throw new ChatServiceException(ChatServiceException.CHAT_ROL_NOT_FOUND);</span>
 		}
-<span class="fc" id="L52">		return chats;</span>
+<span class="nc" id="L52">		return chats;</span>
 	}
 
 	@Override
 	public List&lt;Message&gt; findAllMessagesByChat(String idChat) throws ChatServiceException {
-<span class="fc" id="L57">		return chatRepository.findById(idChat)</span>
-<span class="fc" id="L58">				.orElseThrow(() -&gt; new ChatServiceException(ChatServiceException.CHAT_NOT_FOUND)).getMessages();</span>
+<span class="nc" id="L57">		return chatRepository.findById(idChat)</span>
+<span class="nc" id="L58">				.orElseThrow(() -&gt; new ChatServiceException(ChatServiceException.CHAT_NOT_FOUND)).getMessages();</span>
 	}
 
 	@Override
 	public Message addMessage(User user, Chat chat, String message) {
-<span class="fc" id="L63">		Date date = new Date();</span>
-<span class="fc" id="L64">		SimpleDateFormat formatDate = new SimpleDateFormat(&quot;hh: mm: ss a dd-MMM-aaaa&quot;);</span>
-<span class="fc" id="L65">		List&lt;Message&gt; messages = chat.getMessages();</span>
-<span class="fc" id="L66">		messages.add(new Message(message, user, formatDate.format(date)));</span>
-<span class="fc" id="L67">		chat.setMessages(messages);</span>
-<span class="fc" id="L68">		chatRepository.save(chat);</span>
-<span class="fc" id="L69">		return new Message(message, user, formatDate.toString());</span>
+<span class="nc" id="L63">		Date date = new Date();</span>
+<span class="nc" id="L64">		SimpleDateFormat formatDate = new SimpleDateFormat(&quot;hh: mm: ss a dd-MMM-aaaa&quot;);</span>
+<span class="nc" id="L65">		List&lt;Message&gt; messages = chat.getMessages();</span>
+<span class="nc" id="L66">		messages.add(new Message(message, user, formatDate.format(date)));</span>
+<span class="nc" id="L67">		chat.setMessages(messages);</span>
+<span class="nc" id="L68">		chatRepository.save(chat);</span>
+<span class="nc" id="L69">		return new Message(message, user, formatDate.toString());</span>
 	}
 
 	@Override
 	public Chat findChatById(String idChat) throws ChatServiceException {
-<span class="fc" id="L74">		return chatRepository.findById(idChat)</span>
-<span class="fc" id="L75">				.orElseThrow(() -&gt; new ChatServiceException(ChatServiceException.CHAT_NOT_FOUND));</span>
+<span class="nc" id="L74">		return chatRepository.findById(idChat)</span>
+<span class="nc" id="L75">				.orElseThrow(() -&gt; new ChatServiceException(ChatServiceException.CHAT_NOT_FOUND));</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

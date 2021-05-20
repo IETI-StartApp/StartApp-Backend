@@ -18,7 +18,6 @@ import edu.escuelaing.ieti.startapp.business.services.projectservices.UserServic
 import edu.escuelaing.ieti.startapp.web.requests.ChatRequest;
 
 @RestController
-@CrossOrigin(origins= "*")
 @RequestMapping(value = "api/v1/chat")
 public class ChatController {
 	private final ChatServices chatServices;

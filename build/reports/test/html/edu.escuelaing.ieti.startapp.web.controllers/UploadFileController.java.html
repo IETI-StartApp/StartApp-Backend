@@ -27,14 +27,14 @@ public class UploadFileController {
                                               ){
         ResponseEntity&lt;Object&gt; response;
         try {
-<span class="fc" id="L30">            String fileUrl = fileService.uploadFile(request,file);</span>
-<span class="fc" id="L31">            response =  new ResponseEntity&lt;&gt;(fileUrl,HttpStatus.CREATED);</span>
-<span class="fc" id="L32">        } catch (FileServiceException e) {</span>
-<span class="fc" id="L33">            Map&lt;String,Object&gt; errorResponse = new HashMap&lt;&gt;();</span>
-<span class="fc" id="L34">            errorResponse.put(&quot;Error&quot;,e.getMessage());</span>
-<span class="fc" id="L35">            response = new ResponseEntity&lt;&gt;(errorResponse, HttpStatus.BAD_REQUEST);</span>
-<span class="fc" id="L36">        }</span>
-<span class="fc" id="L37">        return response;</span>
+<span class="nc" id="L30">            String fileUrl = fileService.uploadFile(request,file);</span>
+<span class="nc" id="L31">            response =  new ResponseEntity&lt;&gt;(fileUrl,HttpStatus.CREATED);</span>
+<span class="nc" id="L32">        } catch (FileServiceException e) {</span>
+<span class="nc" id="L33">            Map&lt;String,Object&gt; errorResponse = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L34">            errorResponse.put(&quot;Error&quot;,e.getMessage());</span>
+<span class="nc" id="L35">            response = new ResponseEntity&lt;&gt;(errorResponse, HttpStatus.BAD_REQUEST);</span>
+<span class="nc" id="L36">        }</span>
+<span class="nc" id="L37">        return response;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

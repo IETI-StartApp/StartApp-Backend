@@ -31,44 +31,44 @@ public class FileServiceImpl implements IFileService {
     public String uploadFile(UploadFileRequest request, MultipartFile multipartFile) throws FileServiceException {
 
         String fileUrl;
-<span class="fc bfc" id="L34" title="All 2 branches covered.">        if (isValid(multipartFile.getContentType(),request.getType())){</span>
-<span class="fc" id="L35">            fileUrl = upload(request.getFolder(), request.getFilename(), multipartFile);</span>
+<span class="nc bnc" id="L34" title="All 2 branches missed.">        if (isValid(multipartFile.getContentType(),request.getType())){</span>
+<span class="nc" id="L35">            fileUrl = upload(request.getFolder(), request.getFilename(), multipartFile);</span>
         }else{
-<span class="fc" id="L37">            throw new FileServiceException(FileServiceException.INVALID_EXTENSION);</span>
+<span class="nc" id="L37">            throw new FileServiceException(FileServiceException.INVALID_EXTENSION);</span>
         }
-<span class="fc" id="L39">        return fileUrl;</span>
+<span class="nc" id="L39">        return fileUrl;</span>
     }
 
     private String upload(String bucketName, String fileName, MultipartFile multipartFile) throws FileServiceException {
         String fileUrl;
         try {
-<span class="fc" id="L45">            fileUrl = uploadFileWithPublicAccess(bucketName, fileName, multipartFile);</span>
+<span class="nc" id="L45">            fileUrl = uploadFileWithPublicAccess(bucketName, fileName, multipartFile);</span>
 <span class="nc" id="L46">        } catch (IOException e) {</span>
 <span class="nc" id="L47">            throw new FileServiceException(FileServiceException.UPLOAD_ERROR);</span>
-<span class="fc" id="L48">        }</span>
-<span class="fc" id="L49">        return fileUrl;</span>
+<span class="nc" id="L48">        }</span>
+<span class="nc" id="L49">        return fileUrl;</span>
     }
 
     private String uploadFileWithPublicAccess (String bucketName, String fileName, MultipartFile multipartFile) throws IOException {
-<span class="fc" id="L53">        AmazonS3 connection = s3Client.getConnection();</span>
-<span class="fc" id="L54">        ObjectMetadata metadata = new ObjectMetadata();</span>
-<span class="fc" id="L55">        metadata.setContentType(multipartFile.getContentType());</span>
-<span class="fc" id="L56">        metadata.setContentLength(multipartFile.getSize());</span>
-<span class="fc" id="L57">        PutObjectRequest fileRequest = new PutObjectRequest(bucketName,</span>
-<span class="fc" id="L58">                fileName.toLowerCase(),multipartFile.getInputStream(),metadata)</span>
-<span class="fc" id="L59">                .withCannedAcl(CannedAccessControlList.PublicRead);</span>
-<span class="fc" id="L60">        connection.putObject(fileRequest);</span>
-<span class="fc" id="L61">        return connection.getUrl(bucketName,fileName).toExternalForm();</span>
+<span class="nc" id="L53">        AmazonS3 connection = s3Client.getConnection();</span>
+<span class="nc" id="L54">        ObjectMetadata metadata = new ObjectMetadata();</span>
+<span class="nc" id="L55">        metadata.setContentType(multipartFile.getContentType());</span>
+<span class="nc" id="L56">        metadata.setContentLength(multipartFile.getSize());</span>
+<span class="nc" id="L57">        PutObjectRequest fileRequest = new PutObjectRequest(bucketName,</span>
+<span class="nc" id="L58">                fileName.toLowerCase(),multipartFile.getInputStream(),metadata)</span>
+<span class="nc" id="L59">                .withCannedAcl(CannedAccessControlList.PublicRead);</span>
+<span class="nc" id="L60">        connection.putObject(fileRequest);</span>
+<span class="nc" id="L61">        return connection.getUrl(bucketName,fileName).toExternalForm();</span>
     }
 
     private boolean isValid(String contentType,String requestType){
-<span class="fc bfc" id="L65" title="All 3 branches covered.">        switch (requestType){</span>
+<span class="nc bnc" id="L65" title="All 3 branches missed.">        switch (requestType){</span>
             case &quot;IMAGE&quot;:
-<span class="fc" id="L67">                return imageTypes.contains(contentType);</span>
+<span class="nc" id="L67">                return imageTypes.contains(contentType);</span>
             case &quot;DOCUMENT&quot;:
-<span class="fc" id="L69">                return documentTypes.contains(contentType);</span>
+<span class="nc" id="L69">                return documentTypes.contains(contentType);</span>
             default:
-<span class="fc" id="L71">                return false;</span>
+<span class="nc" id="L71">                return false;</span>
         }
 
     }

@@ -16,33 +16,36 @@ import lombok.Setter;
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
-<span class="fc" id="L19">	@Getter @Setter</span>
+<span class="pc" id="L19">	@Getter @Setter</span>
 	private String id;
-<span class="fc" id="L21">	@Getter @Setter</span>
+<span class="pc" id="L21">	@Getter @Setter</span>
 	private String firstName;
-<span class="fc" id="L23">	@Getter @Setter</span>
+<span class="pc" id="L23">	@Getter @Setter</span>
 	private String lastName; 
-<span class="fc" id="L25">	@Getter @Setter</span>
+<span class="pc" id="L25">	@Getter @Setter</span>
 	private String email;
-<span class="fc" id="L27">	@Getter @Setter</span>
+<span class="pc" id="L27">	@Getter @Setter</span>
 	private long identification;
-<span class="fc" id="L29">	@Getter @Setter</span>
+<span class="pc" id="L29">	@Getter @Setter</span>
 	private UserRole role;
-<span class="fc" id="L31">	@Getter @Setter</span>
+<span class="pc" id="L31">	@Getter @Setter</span>
 	private String description;
-<span class="fc" id="L33">	@Getter @Setter</span>
+<span class="pc" id="L33">	@Getter @Setter</span>
 	private List&lt;Project&gt; projects;
+<span class="pc" id="L35">	@Getter @Setter</span>
+	private String image;
 
 	public User(String firstName, String lastName, String email, long identification, UserRole role, String description,
-<span class="fc" id="L37">			List&lt;Project&gt; projects) {</span>
-<span class="fc" id="L38">		this.firstName = firstName;</span>
-<span class="fc" id="L39">		this.lastName = lastName;</span>
-<span class="fc" id="L40">		this.email = email;</span>
-<span class="fc" id="L41">		this.identification = identification;</span>
-<span class="fc" id="L42">		this.role = role;</span>
-<span class="fc" id="L43">		this.description = description;</span>
-<span class="fc" id="L44">		this.projects = projects;</span>
-<span class="fc" id="L45">	}</span>
+<span class="fc" id="L39">			List&lt;Project&gt; projects, String image) {</span>
+<span class="fc" id="L40">		this.firstName = firstName;</span>
+<span class="fc" id="L41">		this.lastName = lastName;</span>
+<span class="fc" id="L42">		this.email = email;</span>
+<span class="fc" id="L43">		this.identification = identification;</span>
+<span class="fc" id="L44">		this.role = role;</span>
+<span class="fc" id="L45">		this.description = description;</span>
+<span class="fc" id="L46">		this.projects = projects;</span>
+<span class="fc" id="L47">		this.image = image; </span>
+<span class="fc" id="L48">	}</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
