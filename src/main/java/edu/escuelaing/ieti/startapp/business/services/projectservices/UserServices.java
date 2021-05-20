@@ -16,6 +16,7 @@ public interface UserServices {
 
 	List<User> getUserByRole(String role) throws UserServiceException;
 
+	User getUserByEmail(String email) throws  UserServiceException;
 	User addProject(User user, Project project);
 
 }

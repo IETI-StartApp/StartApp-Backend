@@ -11,42 +11,37 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin(origins= &quot;*&quot;)
-@RequestMapping(&quot;/support/tickets&quot;)
+@RequestMapping(&quot;api/v1/support/tickets&quot;)
 public class TicketController {
 
-    private ITicketServices ticketServices;
+    private final ITicketServices ticketServices;
     @Autowired
-<span class="fc" id="L20">    public TicketController(ITicketServices ticketServices) {</span>
-<span class="fc" id="L21">        this.ticketServices = ticketServices;</span>
-<span class="fc" id="L22">    }</span>
+<span class="fc" id="L19">    public TicketController(ITicketServices ticketServices) {</span>
+<span class="fc" id="L20">        this.ticketServices = ticketServices;</span>
+<span class="fc" id="L21">    }</span>
 
     @PostMapping()
     public ResponseEntity&lt;Object&gt; publishTicket(@RequestBody TicketRequest ticketRequest){
-<span class="fc" id="L26">        Ticket ticket = ticketRequest.toTicket();</span>
-<span class="fc" id="L27">        ticketServices.saveTicket(ticket);</span>
-<span class="fc" id="L28">        return new ResponseEntity&lt;&gt;(ticket.getId(), HttpStatus.OK);</span>
+<span class="nc" id="L25">        Ticket ticket = ticketRequest.toTicket();</span>
+<span class="nc" id="L26">        ticketServices.saveTicket(ticket);</span>
+<span class="nc" id="L27">        return new ResponseEntity&lt;&gt;(ticket.getId(), HttpStatus.OK);</span>
     }
     @GetMapping()
     public ResponseEntity&lt;Object&gt; getTickets(){
-<span class="fc" id="L32">        return new ResponseEntity&lt;&gt;(ticketServices.getTickets(),HttpStatus.OK);</span>
+<span class="nc" id="L31">        return new ResponseEntity&lt;&gt;(ticketServices.getTickets(),HttpStatus.OK);</span>
     }
 
-    @GetMapping(&quot;/Receptor&quot;)
+    @GetMapping(&quot;/receptor&quot;)
     public ResponseEntity&lt;Object&gt; getTicketByReceptor(@RequestBody UserRequest userRequest){
-<span class="fc" id="L37">        User user = userRequest.toUser();</span>
-<span class="fc" id="L38">        return new ResponseEntity&lt;&gt;(ticketServices.getTicketByReceptor(user),HttpStatus.OK);</span>
+<span class="nc" id="L36">        User user = userRequest.toUser();</span>
+<span class="nc" id="L37">        return new ResponseEntity&lt;&gt;(ticketServices.getTicketByReceptor(user),HttpStatus.OK);</span>
     }
 
-    @GetMapping(&quot;/Sender&quot;)
-    public ResponseEntity&lt;Object&gt; getTicketBySender(@RequestBody UserRequest userRequest){
-<span class="fc" id="L43">        User user = userRequest.toUser();</span>
-<span class="fc" id="L44">        return new ResponseEntity&lt;&gt;(ticketServices.getTicketBySender(user),HttpStatus.OK);</span>
+    @GetMapping(&quot;/sender&quot;)
+    public ResponseEntity&lt;Object&gt; getTicketBySender(@RequestBody UserRequest userRequest) {
+<span class="nc" id="L42">        User user = userRequest.toUser();</span>
+<span class="nc" id="L43">        return new ResponseEntity&lt;&gt;(ticketServices.getTicketBySender(user), HttpStatus.OK);</span>
     }
-
-
-
-
 
 
 }

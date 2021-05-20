@@ -165,7 +165,17 @@ class UserControllerTests {
 			Assertions.fail();
 		}
 	}
-
+	@Test
+	void shouldGetUserByEmail() {
+		try {
+			when(userServicesMock.getUserByEmail(Mockito.anyString())).thenReturn(users.get(0));
+			ResponseEntity<Object> httpResponse = userController.getUserByEmail("test@gmail.com");
+			Assertions.assertEquals(HttpStatus.OK, httpResponse.getStatusCode());
+			Assertions.assertEquals(httpResponse.getBody(), users.get(0));
+		} catch (UserServiceException e) {
+			Assertions.fail();
+		}
+	}
 	@Test
 	void shouldNotGetUserByRole() {
 		try {
@@ -180,7 +190,20 @@ class UserControllerTests {
 			Assertions.fail();
 		}
 	}
-
+	@Test
+	void shouldNotGetUserByEmail() {
+		try {
+			when(userServicesMock.getUserByEmail(Mockito.anyString()))
+					.thenThrow(new UserServiceException(UserServiceException.USER_NOT_FOUND_EXCEPTION));
+			ResponseEntity<Object> httpResponse = userController.getUserByEmail("test@gmail.com");
+			Assertions.assertEquals(HttpStatus.NOT_FOUND, httpResponse.getStatusCode());
+			Map<String, String> error = new HashMap<>();
+			error.put("Error", UserServiceException.USER_NOT_FOUND_EXCEPTION);
+			Assertions.assertEquals(error, httpResponse.getBody());
+		} catch (UserServiceException e) {
+			Assertions.fail();
+		}
+	}
 	@Test
 	void shouldAddProjectToUser() {
 		when(userServicesMock.addProject(Mockito.any(), Mockito.any())).thenReturn(user1);

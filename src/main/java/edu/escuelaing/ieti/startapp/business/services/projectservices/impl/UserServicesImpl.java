@@ -59,4 +59,9 @@ public class UserServicesImpl implements UserServices {
 		userRepository.save(user);
 		return user;
 	}
+	@Override
+	public User getUserByEmail(String email) throws UserServiceException {
+		return userRepository.findByEmail(email)
+				.orElseThrow(() -> new UserServiceException(UserServiceException.USER_NOT_FOUND_EXCEPTION));
+	}
 }

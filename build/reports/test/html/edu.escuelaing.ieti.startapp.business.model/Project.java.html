@@ -1,45 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Project.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">startapp</a> &gt; <a href="index.source.html" class="el_package">edu.escuelaing.ieti.startapp.business.model</a> &gt; <span class="el_source">Project.java</span></div><h1>Project.java</h1><pre class="source lang-java linenums">package edu.escuelaing.ieti.startapp.business.model;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.annotation.Id;
 import java.io.Serializable;
 import java.util.List;
 @Document(collection = &quot;projects&quot;)
+<span class="nc" id="L11">@NoArgsConstructor</span>
 public class Project implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-<span class="fc" id="L13">    @Getter @Setter</span>
-    private String id;
 <span class="pc" id="L15">    @Getter @Setter</span>
+    private String id;
+<span class="nc" id="L17">    @Getter @Setter</span>
     private String name;
-<span class="pc" id="L17">    @Getter @Setter</span>
+<span class="nc" id="L19">    @Getter @Setter</span>
     private String image;
-<span class="pc" id="L19">    @Getter @Setter</span>
+<span class="nc" id="L21">    @Getter @Setter</span>
     private String video;
-<span class="pc" id="L21">    @Getter @Setter</span>
+<span class="nc" id="L23">    @Getter @Setter</span>
     private String country;
-<span class="pc" id="L23">    @Getter @Setter</span>
+<span class="nc" id="L25">    @Getter @Setter</span>
     private String description;
-<span class="fc" id="L25">    @Getter @Setter</span>
+<span class="nc" id="L27">    @Getter @Setter</span>
     private Finance finance;
-<span class="pc" id="L27">    @Getter @Setter </span>
+<span class="nc" id="L29">    @Getter @Setter </span>
     private List&lt;Comment&gt; comments;
-<span class="pc" id="L29">    @Getter @Setter</span>
-    private User User;
+<span class="nc" id="L31">    @Getter @Setter</span>
+    private User user;
     
 
-<span class="fc" id="L33">    public Project(String name, String image, String video, String country, String description,Finance finance, List&lt;Comment&gt; comments, User idUser) {</span>
-<span class="fc" id="L34">        this.name = name;</span>
-<span class="fc" id="L35">        this.image = image;</span>
-<span class="fc" id="L36">        this.video = video;</span>
-<span class="fc" id="L37">        this.country = country;</span>
-<span class="fc" id="L38">        this.description = description;</span>
-<span class="fc" id="L39">        this.finance = finance;</span>
-<span class="fc" id="L40">        this.comments = comments;</span>
-<span class="fc" id="L41">        this.User = idUser;</span>
-<span class="fc" id="L42">    }</span>
+<span class="fc" id="L35">    public Project(String name, String image, String video, String country, String description,Finance finance, List&lt;Comment&gt; comments, User user) {</span>
+<span class="fc" id="L36">        this.name = name;</span>
+<span class="fc" id="L37">        this.image = image;</span>
+<span class="fc" id="L38">        this.video = video;</span>
+<span class="fc" id="L39">        this.country = country;</span>
+<span class="fc" id="L40">        this.description = description;</span>
+<span class="fc" id="L41">        this.finance = finance;</span>
+<span class="fc" id="L42">        this.comments = comments;</span>
+<span class="fc" id="L43">        this.user = user;</span>
+<span class="fc" id="L44">    }</span>
 
 
 }
